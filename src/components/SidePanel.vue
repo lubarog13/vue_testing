@@ -16,12 +16,12 @@
   </b-list-group-item>
   
   <b-list-group-item class="d-flex justify-content-between align-items-center">
-      <b-icon icon="calendar4-week" height="24px"></b-icon>
+      <img src="../assets/icons/Calendar,Schedule.png" height="24px">
     <span class="menu-text">Расписание</span>
   </b-list-group-item>
 
   <b-list-group-item class="d-flex justify-content-between align-items-center">
-      <b-icon icon="book" height="24px"></b-icon>
+      <img src="../assets/icons/Book.png" height="24px">
     <span class="menu-text">Учебный план</span>
   </b-list-group-item>
 
@@ -37,7 +37,7 @@
   </b-list-group-item>
 
     <b-list-group-item class="d-flex justify-content-between align-items-center">
-      <b-icon icon="grid" height="24px"></b-icon>
+      <img src="../assets/icons/Grid, Layout.png" height="24px">
     <span class="menu-text">Сервисы</span>
   </b-list-group-item>
 
@@ -54,7 +54,21 @@
     <b-list-group-item class="d-flex justify-content-between align-items-center">
       <img src="../assets/icons/hierarchy-3.png" height="24px">
     <span class="menu-text">Подразделения</span>
+    <v-icon @click="open=!open" style="font-size: 10px"> fa fa-chevron-down </v-icon>
   </b-list-group-item>
+    <b-list-group-item v-if="open" style="height: 60px">
+        <b-row>
+            <b-col id="col-end">
+        <div class="divider1">
+        </div>
+            </b-col>
+            <b-col cols="10">
+        <div id="personal">
+            Персоналии
+        </div>
+            </b-col>
+        </b-row>
+    </b-list-group-item>
     <b-list-group-item class="d-flex justify-content-between align-items-center">
       <img src="../assets/icons/Notepad.png" height="24px">
     <span class="menu-text">Заявки</span>
@@ -64,7 +78,10 @@
 </template>
 <script>
 export default {
-    name: 'SidePanel'
+    name: 'SidePanel',
+    data: () => ({
+        open: true
+    })
 }
 </script>
 <style scoped>
@@ -79,7 +96,7 @@ export default {
 }
 
 #head-logo {
-    height: 100px;
+    height: 130px;
 }
 .logo-text {
     color: #035DD8;
@@ -94,6 +111,7 @@ export default {
     color: #666666;
     font-size: 16px;
     justify-content: start !important;
+    height: 40px;
 }
 
 .badge-secondary {
@@ -121,6 +139,36 @@ export default {
 
 .b-icon {
     color: #666666;
+}
+
+.fa {
+    height: 4px;
+    width: 8px;
+    margin-left: 40px;
+    font-size: 10px;
+}
+
+#personal {
+    background: #F2F2F2;
+    font-family: "Open Sans", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    color: #333333;
+    font-size: 16px;
+    height: 40px;
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    padding: 10px;
+}
+.divider1 {
+    background: #F2F2F2;
+    width: 2px;
+    height: 40px;
+}
+#col-end {
+    align-items: end;
+    justify-content: end;
+    display: flex;
 }
 </style>
 
