@@ -4,9 +4,20 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <side-panel></side-panel>
     <router-view/>
   </div>
 </template>
+
+<script>
+import SidePanel from './components/SidePanel.vue'
+export default {
+  name: "App",
+  components: {
+    SidePanel
+  }
+}
+</script>
 
 <style>
 #app {
