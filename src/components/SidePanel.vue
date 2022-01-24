@@ -6,7 +6,7 @@
             </b-row>
             <b-list-group>
   <b-list-group-item class="d-flex justify-content-between align-items-center">
-    <b-icon icon="house-door" height="24px"></b-icon>
+    <img src="../assets/icons/Home, House.png" height="24px">
     <span class="menu-text">Главная</span>
   </b-list-group-item>
 
@@ -14,10 +14,50 @@
       <img src="../assets/icons/documents-file-checkmark.1document_checked.png" height="24px">
     <span class="menu-text">Запись по выбору</span>
   </b-list-group-item>
+  
+  <b-list-group-item class="d-flex justify-content-between align-items-center">
+      <b-icon icon="calendar4-week" height="24px"></b-icon>
+    <span class="menu-text">Расписание</span>
+  </b-list-group-item>
 
   <b-list-group-item class="d-flex justify-content-between align-items-center">
-    Morbi leo risus
-    <b-badge variant="secondary" pill>1</b-badge>
+      <b-icon icon="book" height="24px"></b-icon>
+    <span class="menu-text">Учебный план</span>
+  </b-list-group-item>
+
+  <b-list-group-item class="d-flex justify-content-between align-items-center">
+      <img src="../assets/icons/Notebook, Notepad.png" height="24px">
+    <span class="menu-text">ЭЗК</span>
+  </b-list-group-item>
+
+  <b-list-group-item class="d-flex justify-content-between align-items-center">
+    <img src="../assets/icons/Messages, Chat.png" height="24px">
+    <span class="menu-text">Сообщения</span>
+    <b-badge variant="secondary" pill>152+</b-badge>
+  </b-list-group-item>
+
+    <b-list-group-item class="d-flex justify-content-between align-items-center">
+      <b-icon icon="grid" height="24px"></b-icon>
+    <span class="menu-text">Сервисы</span>
+  </b-list-group-item>
+
+  <b-list-group-item class="d-flex justify-content-between align-items-center">
+      <img src="../assets/icons/Basketball.png" height="24px">
+    <span class="menu-text">Физическая культура</span>
+  </b-list-group-item>
+
+    <b-list-group-item class="d-flex justify-content-between align-items-center">
+      <img src="../assets/icons/users-profile-group.png" height="24px">
+    <span class="menu-text">Группы</span>
+  </b-list-group-item>
+
+    <b-list-group-item class="d-flex justify-content-between align-items-center">
+      <img src="../assets/icons/hierarchy-3.png" height="24px">
+    <span class="menu-text">Подразделения</span>
+  </b-list-group-item>
+    <b-list-group-item class="d-flex justify-content-between align-items-center">
+      <img src="../assets/icons/Notepad.png" height="24px">
+    <span class="menu-text">Заявки</span>
   </b-list-group-item>
 </b-list-group>
     </div>
@@ -52,7 +92,7 @@ export default {
 .list-group-item {
     border: 0;
     color: #666666;
-    font-size: 20px;
+    font-size: 16px;
     justify-content: start !important;
 }
 
@@ -60,9 +100,27 @@ export default {
     background: #EB5757;
 }
 .menu-text {
-    margin-left: 30px;
+    margin-left: 20px;
     font-family: "Open Sans", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 400;
+    font-size: 16px;
+}
+
+.badge-pill {
+        margin-left: 40px;
+    border-radius: 24px;
+    width: 40px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-family: "Open Sans", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+}
+
+.b-icon {
+    color: #666666;
 }
 </style>
 
