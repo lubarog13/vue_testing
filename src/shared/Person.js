@@ -1,6 +1,7 @@
-export var person = {
+export var person_base = {
     debug: true,
     state: {
+        is_teacher: false,
         role: "student",
         last_name: "Абдуллаев",
         first_name: "Вячеслав",
@@ -14,6 +15,9 @@ export var person = {
         positions: null,
         powers: null,
         photo: "Abdulaev.png",
+        main_role: "Профессор, доктор физико-математических наук",
+        scopus_index: 245,
+        rinc_index: 133,
         activities: [
             {
                 type: "НИР",
@@ -77,52 +81,122 @@ export var person = {
                 role: "член клуба",
                 image: "Собеседник-2.png"
             },
+        ], 
+        colleagues: [
+            {
+                last_name: "Шабанин",
+                first_name: "Семён",
+                second_name: "Олегович",
+                role: "Староста",
+                image: "Shabanin.png",
+            },
+            {
+                last_name: "Веденский",
+                first_name: "Владислав",
+                second_name: "Олегович",
+                role: "Староста",
+                image: "Vedensky.png",
+            }
+        ],
+        timetable: [
+            {
+                name: "Теория и методология научных исследований",
+                type: "Практика",
+                addr: "Ауд. 1216, ул. Ломоносова д.9",
+                start_time: "8:20",
+                end_time: "9:50",
+                date: new Date()
+            },
+            {
+                name: "Патентоведение и защита интеллектуальной собственности",
+                type: "Лекция",
+                addr: "Ауд. 1216, ул. Ломоносова д.9",
+                start_time: "13:20",
+                end_time: "9:50",
+                date: new Date()
+            },
+            {
+                name: "Теория и методология научных исследований",
+                type: "Практика",
+                addr: "Ауд. 1216, ул. Ломоносова д.9",
+                start_time: "16:20",
+                end_time: "9:50",
+                date: new Date()
+            }
         ]
     },
-    setStudent(last_name, first_name, second_name, isu, course, faculty, op, specialization, group) {
-        this.last_name = last_name
-        this.first_name = first_name
-        this.second_name = second_name
-        this.isu=isu
-        this.course = course
-        this.faculty = faculty
-        this.op = op
-        this.specialization = specialization
-        this.group = group
-        this.role = "student"
+    setStudent(last_name, first_name, second_name, isu, course, faculty, op, specialization, group, photo) {
+        this.state.last_name = last_name
+        this.state.first_name = first_name
+        this.state.second_name = second_name
+        this.state.isu=isu
+        this.state.course = course
+        this.state.faculty = faculty
+        this.state.op = op
+        this.state.specialization = specialization
+        this.state.group = group
+        this.state.role = "student"
+        this.state.photo = photo
+        this.state.is_teacher = false
     },
 
-    setEmployee(last_name, first_name, second_name, isu, positions, powers) {
-        this.last_name = last_name
-        this.first_name = first_name
-        this.second_name = second_name
-        this.isu=isu
-        this.positions = positions
-        this.powers = powers
-        this.role = "employee"
+    setEmployee(last_name, first_name, second_name, isu, positions, powers, photo) {
+        this.state.last_name = last_name
+        this.state.first_name = first_name
+        this.state.second_name = second_name
+        this.state.isu=isu
+        this.state.positions = positions
+        this.state.powers = powers
+        this.state.role = "employee"
+        this.state.photo = photo
+        this.state.is_teacher = false
     },
 
-    setStudentEmployee(last_name, first_name, second_name, isu, course, faculty, op, specialization, group, positions, powers) {
-        this.last_name = last_name
-        this.first_name = first_name
-        this.second_name = second_name
-        this.isu=isu
-        this.course = course
-        this.faculty = faculty
-        this.op = op
-        this.specialization = specialization
-        this.group = group
-        this.positions = positions
-        this.powers = powers
-        this.role = "student_employee"
+    setStudentEmployee(last_name, first_name, second_name, isu, course, faculty, op, specialization, group, positions, powers, photo) {
+        this.state.last_name = last_name
+        this.state.first_name = first_name
+        this.state.second_name = second_name
+        this.state.isu=isu
+        this.state.course = course
+        this.state.faculty = faculty
+        this.state.op = op
+        this.state.specialization = specialization
+        this.state.group = group
+        this.state.positions = positions
+        this.state.powers = powers
+        this.state.role = "student_employee"
+        this.state.photo = photo
+        this.state.is_teacher = false
     },
 
     setActivities (activities) {
-        this.activities = activities
+        this.state.activities = activities
     },
 
     setContacts(contacts) {
-        this.contacts = contacts
+        this.state.contacts = contacts
+    },
+
+    setColleagues(colleagues) {
+        this.state.colleagues = colleagues
+    },
+
+    setTeacher(last_name, first_name, second_name, isu, main_role, scopus_index,rinc_index, positions, powers, photo) {
+        this.state.last_name = last_name
+        this.state.first_name = first_name
+        this.state.second_name = second_name
+        this.state.isu=isu
+        this.state.positions = positions
+        this.state.powers = powers
+        this.state.role = "employee"
+        this.state.photo = photo
+        this.state.is_teacher = true
+        this.state.main_role = main_role
+        this.state.copus_index = scopus_index
+        this.state.rinc_index = rinc_index
+    },
+    setTimeTable(timetable) {
+        this.state.timetable = timetable
     }
 
 }
