@@ -5,7 +5,7 @@
       <side-panel app></side-panel>
       <app-nav-bar></app-nav-bar>
       <v-btn fab id="close" elevation="0"><v-icon style="font-size: 14px" color="#333333"> fa fa-chevron-left </v-icon></v-btn>
-      <router-view/>
+      <router-view style="margin-left: 264px"/>
     </v-main>
   </v-app>
 </template>

@@ -23,7 +23,9 @@
             <v-divider vertical></v-divider>
             </b-nav-item>
             <b-nav-item >
+                <v-badge dot overlap color="red">
                 <b-icon icon="bell" font-scale="1.5" ></b-icon>
+                </v-badge>
             </b-nav-item>
             <b-nav-item>
             <v-divider vertical></v-divider>
