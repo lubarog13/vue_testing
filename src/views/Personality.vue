@@ -338,9 +338,6 @@ export default {
       display: flex;
       align-items: center;
   }
-  .divider-col {
-      border-right: 1px solid #E6E6E6;
-  }
   .sub-text {
       font-size: 14px;
   }
@@ -444,5 +441,8 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
+  }
+  .divider-col {
+      border-right: 1px solid #E6E6E6;
   }
 </style>

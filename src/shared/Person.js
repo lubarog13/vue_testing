@@ -131,6 +131,15 @@ export var person_base = {
                 start_time: "16:20",
                 end_time: "9:50",
                 date: new Date()
+            },
+            {
+                name: "Введение в распределенные технологии	",
+                type: "Практика",
+                aud: 404,
+                addr: "Биржевая линия, д.14, лит.А",
+                start_time: "15:20",
+                end_time: "16:50",
+                date: new Date("01-24-2022")
             }
         ]
     },
