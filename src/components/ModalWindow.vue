@@ -4,14 +4,14 @@
                             <v-btn outlined class="nav-button" @click="clickBack()">
                                 <b-icon icon="chevron-left"></b-icon>
                             </v-btn>
-                            <div id="calendar-btn">
+                            <div id="calendar-btn" v-click-outside="onClickOutside">
                             <v-btn color="white" style="margin: 0; color: #333333" elevation="0" class="more" @click="open_calendar=!open_calendar">
                                 {{selected_date.getDate()}} {{monthNames[selected_date.getMonth()]}} {{selected_date.getFullYear()}}
                             </v-btn>
                             <v-card id="calendar-card" v-if="open_calendar">
                                 <b-row>
                                     <b-col cols="8" class="centered-col" style="justify-content: start">
-                                        <div class="bold-text" style="font-size: 17px">{{capitalizeFirstLetter(monthNames[selected_date.getMonth()]) + ", " + selected_date.getFullYear()}}</div>
+                                        <div class="bold-text" style="font-size: 17px">{{monthNames1[selected_date.getMonth()] + ", " + selected_date.getFullYear()}}</div>
                                     </b-col>
                                     <b-col cols="3">
                                         <div style="display: flex">
@@ -28,8 +28,22 @@
                                     <div v-for="week_day in week_days" :key="week_day" class="date-col bold-text main-text">
                                         {{week_day}}
                                     </div>
-                                    <div v-for="month_day in month_days" :key="month_day.toDateString()" class="date-col">
-                                        <v-btn elevation="0" class="date-button main-text" v-bind:class="{'selected_button': month_day.toDateString()==selected_date.toDateString(), 'today-button ': month_day.toDateString()==new Date().toDateString() && month_day.toDateString()!=selected_date.toDateString(), 'date-button': month_day.toDateString()!=selected_date.toDateString()}">{{month_day.getDate()}}</v-btn>
+                                    <div v-for="( month_day, index) in month_days" :key="month_day.toDateString()" class="date-col">
+                                        <v-btn elevation="0" class="date-button main-text" 
+                                        v-bind:class="{'selected_button': month_day.toDateString()==selected_date.toDateString(), 
+                                        'today-button ': month_day.toDateString()==new Date().toDateString() && month_day.toDateString()!=selected_date.toDateString(), 
+                                        'date-button': month_day.toDateString()!=selected_date.toDateString(),
+                                        'no_in_month_btn': month_day.getMonth()!=selected_date.getMonth()
+                                        }"
+                                        :disabled="events[index]==0 && month_day.getMonth()==selected_date.getMonth()"
+                                        @click="selected_date = new Date(month_day); open_calendar=false"
+                                        >
+                                        {{month_day.getDate()}}
+                                        <div class="events-box">
+                                            <div class="lection-event" v-if="events[index]==1 || events[index]==3" :style="{'margin-right': events[index]==3? '2px': '0px'}"></div>
+                                        <div class="practic-event" v-if="events[index]==2 || events[index]==3"></div>
+                                        </div>
+                                        </v-btn>
                                     </div>
                                 </b-row>
                             </v-card>
@@ -69,9 +83,10 @@
 </template>
  
 <script>
+    import clickOutside from '../directives/clickOutside.vue'
     export default {
         name: "ModalWindow",
-        
+        directives: {clickOutside},
         data: function () {
             return {
                 monthNames: ["января", "февраля", "марта", "апреля", "мая", "июня",
@@ -80,7 +95,10 @@
                 selected_date: new Date(),
                 open_calendar: false,
                 month_days: [],
-                week_days : ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+                week_days : ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+                monthNames1 : ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+            "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                events: []
             }
         },
         props: ['person'],
@@ -92,9 +110,6 @@
         clickBack() {
             var result =this.selected_date.setDate(this.selected_date.getDate() - 1)
             this.selected_date = new Date(result)
-        },
-         capitalizeFirstLetter(string) {
-            return string.charAt(0).toUpperCase() + string.slice(1);
         },
         clickNextMonth() {
             var result = this.selected_date.setMonth(this.selected_date.getMonth() + 1)
@@ -139,7 +154,15 @@
                 this.month_days.push(new Date(start_date.setDate(start_date.getDate() + 1)))
                 week_day+=1
             }
-         }
+            this.events = []
+            for (let day of this.month_days) {
+                this.events.push(this.person.getScheduleEvents(day))
+            }
+         },
+         onClickOutside (event) {
+             console.log(event)
+            this.open_calendar = false
+        }
         },
         created () {
             this.setMonthDays()
@@ -224,5 +247,31 @@
     font-size: 14px !important;
     height: 24px !important;
     padding: 0px !important;
+}
+.theme--light.v-btn.v-btn--disabled.v-btn--has-bg {
+    background: white !important;
+    color: #B3B3B3;
+}
+.no_in_month_btn {
+    background: white !important;
+    color: #E6E6E6 !important;
+    pointer-events:none;
+}
+.practic-event {
+    background: #F7B500;
+    width: 2px;
+    height: 2px;
+    border-radius: 2px;
+}
+.lection-event {
+    background: #035DD8;
+    width: 2px;
+    height: 2px;
+    border-radius: 2px;
+}
+.events-box {
+    position: absolute;
+    bottom: 0;
+    display: flex;
 }
 </style>

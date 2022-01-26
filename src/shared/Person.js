@@ -134,14 +134,30 @@ export var person_base = {
             },
             {
                 name: "Введение в распределенные технологии	",
-                type: "Практика",
+                type: "Лекция",
                 aud: 404,
                 addr: "Биржевая линия, д.14, лит.А",
                 start_time: "15:20",
                 end_time: "16:50",
                 date: new Date("01-24-2022")
             }
-        ]
+        ],
+        getScheduleEvents(date) {
+            var types = {
+                lection: false,
+                practic: false
+            }
+            for (let lesson of this.timetable) {
+                if (date.toDateString()==lesson.date.toDateString()) {
+                    if(lesson.type=="Лекция") types.lection=true 
+                    else types.practic=true
+                }
+            }
+            var count = 0
+            if(types.lection ==true) count+=1
+            if(types.practic ==true) count+=2
+            return count
+        }
     },
     setStudent(last_name, first_name, second_name, isu, course, faculty, op, specialization, group, photo, exchange) {
         this.state.last_name = last_name
