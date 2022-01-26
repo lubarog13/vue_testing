@@ -18,6 +18,7 @@ export var person_base = {
         main_role: "Профессор, доктор физико-математических наук",
         scopus_index: 245,
         rinc_index: 133,
+        exchange: false,
         activities: [
             {
                 type: "НИР",
@@ -58,6 +59,11 @@ export var person_base = {
                 contact: "vk.com/example",
                 comment: null,
                 icon: "Buttons-1.png"
+            },
+            {
+                contact: "Кронверкский пр., д.49, лит.А",
+                comment: "289/1",
+                icon: "Buttons-3.png"
             }
         ],
         clubs: [
@@ -102,7 +108,8 @@ export var person_base = {
             {
                 name: "Теория и методология научных исследований",
                 type: "Практика",
-                addr: "Ауд. 1216, ул. Ломоносова д.9",
+                aud: 1216,
+                addr: "ул. Ломоносова д.9",
                 start_time: "8:20",
                 end_time: "9:50",
                 date: new Date()
@@ -110,7 +117,8 @@ export var person_base = {
             {
                 name: "Патентоведение и защита интеллектуальной собственности",
                 type: "Лекция",
-                addr: "Ауд. 1216, ул. Ломоносова д.9",
+                aud: 1216,
+                addr: "ул. Ломоносова д.9",
                 start_time: "13:20",
                 end_time: "9:50",
                 date: new Date()
@@ -118,14 +126,15 @@ export var person_base = {
             {
                 name: "Теория и методология научных исследований",
                 type: "Практика",
-                addr: "Ауд. 1216, ул. Ломоносова д.9",
+                aud: 1216,
+                addr: "ул. Ломоносова д.9",
                 start_time: "16:20",
                 end_time: "9:50",
                 date: new Date()
             }
         ]
     },
-    setStudent(last_name, first_name, second_name, isu, course, faculty, op, specialization, group, photo) {
+    setStudent(last_name, first_name, second_name, isu, course, faculty, op, specialization, group, photo, exchange) {
         this.state.last_name = last_name
         this.state.first_name = first_name
         this.state.second_name = second_name
@@ -138,6 +147,7 @@ export var person_base = {
         this.state.role = "student"
         this.state.photo = photo
         this.state.is_teacher = false
+        this.state.exchange = exchange
     },
 
     setEmployee(last_name, first_name, second_name, isu, positions, powers, photo) {
