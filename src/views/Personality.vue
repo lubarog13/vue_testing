@@ -188,7 +188,7 @@
                         <p class="sub-text" style="margin-bottom: 0">Группа:</p>
                     </b-col>
                     <b-col>
-                        <p class="main-text" style="margin-bottom: 0"><a href="#">{{personspecialization.state.group}}</a></p>
+                        <p class="main-text" style="margin-bottom: 0"><a href="#">{{person.group}}</a></p>
                     </b-col>
                 </b-row>
                 </div>
@@ -294,8 +294,14 @@ export default {
         }
     },
     created() {
+        //Студент
+        //
+        //Сотрудник
         //person_base.setEmployee("Шабанин", "Семен", "Олегович", "192073", [{position: "Центр проектирования корпоративных сервисов", role: "Директор", vacation: true}], [{power: "Mobile Development Club", role: "Ментор"}], "Shabanin.png")
-        person_base.setTeacher("Бугров", "Владислав", "Евгеньевич", "168462", "Профессор, доктор физико-математических наук", 245, 133, 
+        //Сотрудик + студент
+        //person_base.setStudentEmployee("Шабанин", "Семен", "Олегович", "192073", 4, "ФТМИ", "Управление технологическими инновациями 2018", "Управление технологическими инновациями", "U34752",[{position: "Центр проектирования корпоративных сервисов", role: "Директор", vacation: true}], [{power: "Mobile Development Club", role: "Ментор"}], "Shabanin.png")
+        //Преподаватель
+        /*person_base.setTeacher("Бугров", "Владислав", "Евгеньевич", "168462", "Профессор, доктор физико-математических наук", 245, 133, 
         [{position: "Институт перспективных систем передачи данных", role: "Главный научный сотрудник", vacation: false},
         {position: "Лаборатория атмосферных оптических квантовых каналов связи", role: "Профессор", vacation: false},
         {position: "Научно-исследовательский центр перспективных функциональн...", role: "Главный научный сотрудник", vacation: true},
@@ -309,7 +315,7 @@ export default {
         {power: "Оптоэлектроника 2018 ", role: "Руководитель образовательной программы"},
         {power: "Светодиодные технологии и оптоэлектроника 2019", role: "Руководитель образовательной программы"},
         {power: "Светодиодные технологии и оптоэлектроника 2020", role: "Руководитель образовательной программы"},
-        ], "Bugrov.png")
+        ], "Bugrov.png")*/
         console.log(person_base)
         this.person = person_base.state
         console.log(this.person)
