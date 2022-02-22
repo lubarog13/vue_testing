@@ -1,27 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-.bold-text {
-   font-family: "Open Sans", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.text__bold {
    font-weight: 700 !important;
    color: #333333 !important;
 }
 
-.big-text {
-    font-family: "Open Sans", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.text__big {
    font-weight: 400;
    color: #333333;
    font-size: 16px;
 }
 
-.main-text {
+.text__main {
     font-family: "Open Sans", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    font-weight: 400;
    color: #333333;
    font-size: 14px;
 }
 
-.sub-text {
+.text__sub_text {
     color: #B3B3B3;
-    font-family: "Open Sans", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    font-weight: 400;
    font-size: 12px;
+}
+
+.text {
+   font-family: "Open Sans", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }

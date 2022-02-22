@@ -11,7 +11,7 @@
                             <v-card id="calendar-card" v-if="open_calendar">
                                 <b-row>
                                     <b-col cols="8" class="centered-col" style="justify-content: start">
-                                        <div class="bold-text" style="font-size: 17px">{{monthNames1[selected_date.getMonth()] + ", " + selected_date.getFullYear()}}</div>
+                                        <div class="text" style="font-size: 17px">{{monthNames1[selected_date.getMonth()] + ", " + selected_date.getFullYear()}}</div>
                                     </b-col>
                                     <b-col cols="3">
                                         <div style="display: flex">
@@ -25,11 +25,11 @@
                                     </b-col>
                                 </b-row>
                                 <b-row>
-                                    <div v-for="week_day in week_days" :key="week_day" class="date-col bold-text main-text">
+                                    <div v-for="week_day in week_days" :key="week_day" class="date-col text text text__main">
                                         {{week_day}}
                                     </div>
                                     <div v-for="( month_day, index) in month_days" :key="month_day.toDateString()" class="date-col">
-                                        <v-btn elevation="0" class="date-button main-text" 
+                                        <v-btn elevation="0" class="date-button text text__main" 
                                         v-bind:class="{'selected_button': month_day.toDateString()==selected_date.toDateString(), 
                                         'today-button ': month_day.toDateString()==new Date().toDateString() && month_day.toDateString()!=selected_date.toDateString(), 
                                         'date-button': month_day.toDateString()!=selected_date.toDateString(),
@@ -56,18 +56,18 @@
                         <div v-for="lesson in person.timetable.filter(lesson => lesson.date.toDateString()===selected_date.toDateString())" :key="lesson.start_time + lesson.date" style="margin-bottom: 40px">
                             <b-row>
                                 <b-col cols="2" style="padding-left: 20px">
-                                    <div class="bold-text">{{lesson.start_time}}</div>
-                                    <p class="sub-text">{{lesson.end_time}}</p>
+                                    <div class="text">{{lesson.start_time}}</div>
+                                    <p class="text__sub_text">{{lesson.end_time}}</p>
                                 </b-col>
                                 <b-col cols="5" class="divider-col" v-bind:class="{lection: lesson.type==='Лекция', practic: lesson.type==='Практика'}">
-                                    <p class="main-text">{{lesson.name}}</p>
+                                    <p class="text text__main">{{lesson.name}}</p>
                                 </b-col>
                                 <b-col cols="3" class="divider-col">
-                                    <div class="big-text bold-text">{{lesson.aud}}</div>
-                                    <div class="main-text">{{lesson.addr}}</div>
+                                    <div class="text__big text">{{lesson.aud}}</div>
+                                    <div class="text text__main">{{lesson.addr}}</div>
                                 </b-col>
                                 <b-col cols="2">
-                                    <p class="sub-text main-text"><a href="#">СТР 1</a></p>
+                                    <p class="text__sub_text text text__main"><a href="#">СТР 1</a></p>
                                 </b-col>
                             </b-row>
                         </div>
@@ -76,8 +76,8 @@
                             <div class="centered-col" style="width: 100%; margin-bottom: 20px;">
                             <img src="../assets/icons/undraw_not_found_60pq 1.png">
                             </div>
-                            <span class="big-text bold-text" >Пары не найдены</span>
-                            <p class="big-text">В этот день у преподавателя нет занятий</p>
+                            <span class="text__big text" >Пары не найдены</span>
+                            <p class="text__big text">В этот день у преподавателя нет занятий</p>
                         </div>
                         </div>
 </template>
