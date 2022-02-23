@@ -44,11 +44,6 @@
         color: @black60-color;
     }
 
-    .icon {
-        width: 24px;
-        height: 24px;
-    }
-
     &__name {
         font-weight: 400;
         font-size: 16px;
