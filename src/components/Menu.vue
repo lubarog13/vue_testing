@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import MenuItem from './MenuItem.vue';
+import MenuItem from './UI/MenuItem.vue';
     export default {
         name: "Menu",
         components: {
@@ -87,7 +87,7 @@ import MenuItem from './MenuItem.vue';
 .menu {
     height: 100%;
     width: 264px;
-    border-right: 1px solid @black5-color;
+    border-right: @st_border;
     &__container {
         padding: 24px 16px;
     }

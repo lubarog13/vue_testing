@@ -7,7 +7,7 @@
             <div class="item__options__badge" v-if="item.messages">
                 {{item.messages}}
             </div>
-            <img src="../assets/icons/Arrow.svg?data" class="icon" v-if="item.children">
+            <img :src="require('/src/assets/icons/Arrow.svg?data')" class="icon" v-if="item.children">
         </div>
     </div>
     <div class="item__children" v-if="item.children">
@@ -27,14 +27,15 @@
         props: ["item"],
         computed: {
             item_icon() {
-                return require(`../assets/icons/${this.item.icon}.svg?data`)
+                return require(`/src/assets/icons/${this.item.icon}.svg?data`)
             }
         }
     }
 </script>
 
 <style lang="less" scoped>
-@import (less) url("../assets/_variables.less");
+@import (less) url("/src/assets/_variables.less");
+
 .item {
     cursor: pointer;
     padding: 8px;

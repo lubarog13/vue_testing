@@ -5,21 +5,21 @@
       <img src="@/assets/icons/Arrow.svg?data" class="icon">
     </div>
     <navigation></navigation>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <personality-page></personality-page>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Menu from './components/Menu.vue'
 import Navigation from './components/Navigation.vue'
+import PersonalityPage from './components/PersonalityPage.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     Menu,
-    Navigation
+    Navigation,
+    PersonalityPage
   }
 }
 </script>
