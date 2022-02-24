@@ -9,6 +9,16 @@
             <div class="person__info">
                 <info-card/>
             </div>
+            <div class="right__content-search search">
+                <select class="search__select">
+                    <option>
+                        Вся деятельность
+                        <span class="search__select-count">(345)</span>
+                    </option>
+                </select>
+                <b-form-input placeholder="Поиск" class="search__input"></b-form-input>
+                <b-button class="search__button">Найти</b-button>
+            </div>
         </div> 
     </div>
 </template>
@@ -50,6 +60,52 @@ import PhotoCard from './UI/PhotoCard.vue'
             .person__info {
                 .bordered_box();
                 .pad2()
+            }
+
+            .search {
+                margin-top: 24px;
+                display: flex;
+
+                &__select {
+                    background: @black5-color;
+                    border-color: @black5-color;
+                    border-right-width: 16px;
+                    border-left-width: 16px;
+                    border-bottom-width: 8px;
+                    border-top-width: 8px;
+                    color: @black100-color;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding-right: 12px;
+
+                    option {
+                        color: @black100-color;
+                        font-weight: 600;
+                        font-size: 14px;
+                    }
+
+                    &-count {
+                        color: @black40-color;
+                        font-size: 12px;
+                    }
+
+                    .rad();
+                }
+
+                &__input {
+                    flex: 1;
+                    margin: 0 16px;
+                }
+
+                &__button {
+                    background: @primary-blue-color;
+                    color: white;
+                    border: none;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding: 8px 27px;
+                    .rad()
+                }
             }
         }
 
