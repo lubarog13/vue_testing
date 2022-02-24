@@ -19,16 +19,23 @@
                 <b-form-input placeholder="Поиск" class="search__input"></b-form-input>
                 <b-button class="search__button">Найти</b-button>
             </div>
+            <activity-card class="person__activity" v-for="activity in activities" :key="activity.name" :activity="activity"/>
         </div> 
     </div>
 </template>
 
 <script>
 import InfoCard from './InfoCard.vue'
+import ActivityCard from './UI/ActivityCard.vue'
 import PhotoCard from './UI/PhotoCard.vue'
     export default {
-        components: { PhotoCard, InfoCard },
-        name: "PersonalityPage"
+        components: { PhotoCard, InfoCard, ActivityCard },
+        name: "PersonalityPage",
+        computed: {
+            activities() {
+                return this.$store.state.user.activities
+            }
+        }
     }
 </script>
 
@@ -106,6 +113,10 @@ import PhotoCard from './UI/PhotoCard.vue'
                     padding: 8px 27px;
                     .rad()
                 }
+            }
+
+            .person__activity {
+                margin-top: 16px;
             }
         }
 
