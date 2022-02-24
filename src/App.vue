@@ -60,5 +60,8 @@ export default {
   .icon {
         width: 24px;
         height: 24px;
+        &-close {
+          transform: rotate(0.5turn);
+        }
     }
 </style>

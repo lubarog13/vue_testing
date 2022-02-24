@@ -4,6 +4,12 @@
             <div class="person__photo">
                 <photo-card />
             </div>
+            <div class="person__contacts">
+                <contacts-card />
+            </div>
+            <div class="person__variable-block">
+                <clubs-card />
+            </div>
         </div>
         <div class="right__content">
             <div class="person__info">
@@ -27,9 +33,11 @@
 <script>
 import InfoCard from './InfoCard.vue'
 import ActivityCard from './UI/ActivityCard.vue'
+import ClubsCard from './UI/ClubsCard.vue'
+import ContactsCard from './UI/ContactsCard.vue'
 import PhotoCard from './UI/PhotoCard.vue'
     export default {
-        components: { PhotoCard, InfoCard, ActivityCard },
+        components: { PhotoCard, InfoCard, ActivityCard, ContactsCard, ClubsCard },
         name: "PersonalityPage",
         computed: {
             activities() {
@@ -55,6 +63,14 @@ import PhotoCard from './UI/PhotoCard.vue'
             .person__photo {
                 .bordered_box();
                 .pad1()
+            }
+
+            .person__contacts {
+                margin-top: 24px;
+            }
+
+            .person__variable-block {
+                margin-top: 24px;
             }
         }
 

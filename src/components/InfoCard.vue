@@ -251,20 +251,17 @@ import { mapState } from 'vuex'
                     height: 16px;
                     margin-left: auto;
                     align-self: center;
-
-                    &-close {
-                        transform: rotate(0.5turn);
-                    }
                 }
             }
         }
     }
 
-    .fall-enter-active, .fall-leave-active {
-        transition: all 0.5s;
+/*     .fall-enter-active, .fall-leave-active {
+        transition: height 1.5s;
     }
     .fall-enter, .fall-leave-to  {
-        opacity: 0;
-    }
+        height: 0;
+        overflow: hidden;
+    } */
 
 </style>
