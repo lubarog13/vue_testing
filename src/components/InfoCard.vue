@@ -50,6 +50,62 @@
                 </router-link>
             </div>
         </div>
+        <div class="info__about about" v-if="role==='employee'||role==='student_employee'||role==='teacher'">
+            <div class="about__row">
+                <div class="about__label">
+                    Должности:
+                </div>
+                <div class="about__value-column">
+                    <router-link class="about__value">
+                    {{positions[0].position}}
+                    </router-link>
+                    <div class="about__value">
+                        {{positions[0].role}}
+                    </div>
+                </div>
+                <b-button class="about__actions" v-if="user_positions" @click="openInfo">
+                    {{ opened? "Скрыть" : "Подробнее"}}
+                    <img :src="require('/src/assets/icons/Arrow.svg?data')" class="icon" :class="{'icon-close': opened}">
+                </b-button>
+            </div>
+            <transition name="fall">
+            <div class="about__value-hidden" v-if="opened">
+                    <div class="about__value-column" v-for="position in user_positions" :key="position.position">
+                    <router-link class="about__value">
+                    {{position.position}}
+                    </router-link>
+                    <div class="about__value">
+                        {{position.role}}
+                    </div>
+                </div>
+            </div>
+            </transition>
+            <div class="about__row">
+                <div class="about__label">
+                    Полномочия:
+                </div>
+                <div class="about__value-column">
+                    <router-link class="about__value">
+                    {{powers[0].power}}
+                    </router-link>
+                    <div class="about__value">
+                        {{powers[0].role}}
+                    </div>
+                </div>
+            </div>
+            <transition name="fall">
+            <div class="about__value-hidden" v-if="opened">
+                    <div class="about__value-column" v-for="power in user_powers" :key="power.power">
+                    <router-link class="about__value">
+                    {{power.power}}
+                    </router-link>
+                    <div class="about__value">
+                        {{power.role}}
+                    </div>
+                </div>
+            </div>
+            </transition>
+        </div>
     </div>
 </template>
 
@@ -57,6 +113,16 @@
 import { mapState } from 'vuex'
     export default {
         name: "InfoCard",
+        data() {
+            return {
+                opened: false
+            }
+        },
+        methods: {
+            openInfo() {
+                this.opened = !this.opened
+            }
+        }, 
         computed: {
             ...mapState({
                 first_name: state => state.user.first_name,
@@ -69,7 +135,21 @@ import { mapState } from 'vuex'
                 op: state => state.user.op,
                 specialization: state => state.user.specialization,
                 group: state => state.user.group,
-            })
+                positions: state => state.user.positions,
+                powers: state => state.user.powers
+            }),
+            user_positions() {
+                if (this.positions.length) {
+                    return this.positions.slice(1)
+                }
+                return null
+            },
+            user_powers() {
+                if (this.powers.length) {
+                    return this.powers.slice(1)
+                }
+                return null
+            },
         }
     }
 </script>
@@ -104,17 +184,24 @@ import { mapState } from 'vuex'
             font-size: 14px;
             font-weight: 400;
 
+            &:last-child {
+                margin-top: 12px;
+            }
+
             &__row {
                 display: flex;
                 flex-direction: row;
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
 
-            & > * :not(:last-child) {
+            & > * {
                 margin-bottom: 12px;
             }
 
             &__label {
-                width: 120px;
+                min-width: 120px;
                 color: @black40-color;
             }
 
@@ -122,6 +209,23 @@ import { mapState } from 'vuex'
                 flex: 1;
                 margin-left: 24px;
                 color: @black100-color;
+
+            }
+
+            &__value-column {
+                display: flex;
+                flex-direction: column;
+            }
+
+            &__value-hidden {
+                display: flex;
+                flex-direction: column;
+                margin-left: 120px;
+
+                & > * {
+                margin-bottom: 12px;
+                }
+
             }
 
             router-link.about__value {
@@ -129,7 +233,38 @@ import { mapState } from 'vuex'
                 color: @primary-blue-color;
                 cursor: pointer;
             }
+
+            &__actions {
+                margin-left: auto;
+                width: 106px;
+                height: 28px;
+                background: @black5-color;
+                color: @black100-color;
+                font-weight: 600;
+                display: flex;
+                font-size: 12px;
+                .rad();
+                border: none;
+
+                .icon {
+                    width: 16px;
+                    height: 16px;
+                    margin-left: auto;
+                    align-self: center;
+
+                    &-close {
+                        transform: rotate(0.5turn);
+                    }
+                }
+            }
         }
+    }
+
+    .fall-enter-active, .fall-leave-active {
+        transition: all 0.5s;
+    }
+    .fall-enter, .fall-leave-to  {
+        opacity: 0;
     }
 
 </style>
