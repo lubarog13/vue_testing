@@ -9,6 +9,7 @@
             </div>
             <div class="person__variable-block">
                 <clubs-card />
+                <ColleaguesCard />
             </div>
         </div>
         <div class="right__content">
@@ -35,9 +36,10 @@ import InfoCard from './InfoCard.vue'
 import ActivityCard from './UI/ActivityCard.vue'
 import ClubsCard from './UI/ClubsCard.vue'
 import ContactsCard from './UI/ContactsCard.vue'
+import ColleaguesCard from './UI/ColleaguesCard.vue'
 import PhotoCard from './UI/PhotoCard.vue'
     export default {
-        components: { PhotoCard, InfoCard, ActivityCard, ContactsCard, ClubsCard },
+        components: { PhotoCard, InfoCard, ActivityCard, ContactsCard, ClubsCard, ColleaguesCard },
         name: "PersonalityPage",
         computed: {
             activities() {

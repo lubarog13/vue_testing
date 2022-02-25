@@ -8,7 +8,7 @@
         </div>
         <div class="clubs__content" v-if="opened">
             <div class="clubs__content__club club" v-for="club in clubs" :key="club.name">
-                <b-avatar class="club__avatar" :src="require(`/src/assets/images/${club.image}`)"></b-avatar>
+                <b-avatar class="club__avatar" variant="info" :src="require(`/src/assets/images/${club.image}`)"></b-avatar>
                 <div class="club__content">
                     <div class="club__content__title">{{club.name}}</div>
                     <div class="club__content__role">{{club.role}}</div>
@@ -40,9 +40,10 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import (less) url("/src/assets/_variables.less");
-.clubs {
+.clubs,
+.colleagues {
     .bordered_box();
     padding: 8px 0;
 
@@ -67,13 +68,14 @@
     &__content {
         margin-top: 8px;
 
-        .club {
+        .club,
+        .colleague {
             display: flex;
             padding: 8px 12px;
 
             &__avatar {
-                width: 34px;
-                height: auto;
+                    width: 34px;
+                    height: 34px;
             }
 
             &__content {
@@ -83,7 +85,8 @@
                 margin-left: 8px;
                 flex: 1;
 
-                &__title {
+                &__title,
+                &__name {
                     font-weight: 700;
                     color: @black100-color;
                 }
