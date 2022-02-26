@@ -53,13 +53,14 @@
 }
 </style>
 
-<style>
+<style lang="less">
+@import (less) url("/src/assets/_variables.less");
     .badge-success {
-        background: #00A911;
+        background: @secondary6-color;
         width: 10px;
         height: 10px;
         border: 2px solid white;
-        min-width: 0;
-        min-height: 0;
+        min-width: 0 !important;
+        min-height: 0 !important;
     }
 </style>

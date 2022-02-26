@@ -43,9 +43,15 @@
 <style lang="less">
 @import (less) url("/src/assets/_variables.less");
 .clubs,
-.colleagues {
+.colleagues,
+.timetable {
     .bordered_box();
     padding: 8px 0;
+    .icon {
+        width: 16px;
+        height: 16px;
+        align-self: center;
+    }
 
     .panel {
         display: flex;
@@ -56,12 +62,6 @@
             font-weight: 700;
             font-size: 16px;
             color: @black100-color;
-        }
-
-        .icon {
-            width: 16px;
-            height: 16px;
-            align-self: center;
         }
     }
 

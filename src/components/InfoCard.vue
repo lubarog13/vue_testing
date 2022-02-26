@@ -7,6 +7,16 @@
             <div class="info__main-isu">
                 {{isu}}
             </div>
+            <div class="info__main-exchange" v-if="exchange">
+                <div class="custom-badge" id="tooltip-target-1" @mouseover="active=true" @mouseleave="active=false">
+                    семестровый обмен
+                </div>
+                <div class="arrow_up" target="tooltip-target-1" triggers="hover" v-show="active">
+                </div>
+                <b-tooltip target="tooltip-target-1" triggers="hover" placement="bottom" variant="success">
+                    направлен на обучение в вуз-партнер с {{exchange.start_date.toLocaleDateString()}} по {{exchange.end_date.toLocaleDateString()}}
+                </b-tooltip>
+            </div>
         </div>
         <div class="info__about about" v-if="role==='student'||role==='student_employee'">
             <div class="about__row">
@@ -115,7 +125,8 @@ import { mapState } from 'vuex'
         name: "InfoCard",
         data() {
             return {
-                opened: false
+                opened: false,
+                active: false
             }
         },
         methods: {
@@ -136,7 +147,8 @@ import { mapState } from 'vuex'
                 specialization: state => state.user.specialization,
                 group: state => state.user.group,
                 positions: state => state.user.positions,
-                powers: state => state.user.powers
+                powers: state => state.user.powers,
+                exchange: state => state.user.exchange
             }),
             user_positions() {
                 if (this.positions.length) {
@@ -169,13 +181,33 @@ import { mapState } from 'vuex'
             }
 
             &-isu {
-                flex: 1;
                 text-align: left;
                 margin-left: 16px;
                 font-weight: 400;
                 font-size: 16px;
                 color: @black40-color;
                 align-self: center;
+            }
+            &-exchange {
+                margin-left: 16px;
+                padding-left: 16px;
+                border-left: @st_border;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+
+                .custom-badge {
+                    color: @secondary7-color;
+                    background: @secondary710-color;
+                    
+                    &:hover {
+                        background: @secondary7-color;
+                        color: @secondary710-color;
+                        
+                    }
+
+                }
             }
         }
 
@@ -264,4 +296,25 @@ import { mapState } from 'vuex'
         overflow: hidden;
     } */
 
+</style>
+
+<style lang="less">
+@import (less) url("../assets/_variables.less");
+    .tooltip.b-tooltip-success .tooltip-inner {
+        background: @black100-color !important;
+        opacity: 1 !important;
+        font-size: 12px;
+        margin-top: 2px !important;
+        top: -2px;
+    }
+
+    .arrow_up {
+        width: 0;
+        height: 0;
+        padding-top: 4px;
+        align-self: center;
+        border-style: solid;
+        border-width: 0 5.25px 5.5px 5.25px;
+        border-color: transparent transparent @black100-color transparent;
+    }
 </style>

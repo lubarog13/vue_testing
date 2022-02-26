@@ -29,35 +29,42 @@ export default {
         main_role: "Профессор, доктор физико-математических наук",
         scopus_index: 245,
         rinc_index: 133,
-        exchange: false,
+        exchange: {
+            start_date: new Date("01-15-2022"),
+            end_date: new Date("06-31-2022")
+        },
         activities: [
             {
                 type: "НИР",
                 name: "STARTUP CONNECT- содействие стартапам, предпринимательству и сотрудничеству малых и средних предприятий в приграничном регионе",
                 role: "Участник",
                 icon: "publications-component.png",
-                date: "17.12.2018 –30.05.2021"
+                date: "17.12.2018 –30.05.2021",
+                option: "Публикации"
             },
             {
                 type: "Конференция",
                 name: "Hult Prize 2021 Saint Petersburg Impact Summit",
                 role: "Ответственный исполнитель",
                 icon: "events-component.png",
-                date: "29.04 –30.04.2021"
+                date: "29.04 –30.04.2021",
+                option: "Мероприятия"
             },
             {
                 type: "Интервью",
                 name: "Карьера в сфере устойчивого развития: карьерный путь",
                 role: "Волонтер",
                 icon: "events-component.png",
-                date: "28.08.2021"
+                date: "28.08.2021",
+                option: "Мероприятия"
             },
             {
                 type: "Интервью",
                 name: "Карьера в сфере устойчивого развития: медиа-проекты",
                 role: "Ответственный исполнитель",
                 icon: "events-component.png",
-                date: "16.07.2021"
+                date: "16.07.2021",
+                option: "Мероприятия"
             }
         ],
         contacts: [
@@ -117,6 +124,7 @@ export default {
         ],
         timetable: [
             {
+                id:1,
                 name: "Теория и методология научных исследований",
                 type: "Практика",
                 aud: 1216,
@@ -126,6 +134,7 @@ export default {
                 date: new Date()
             },
             {
+                id:2,
                 name: "Патентоведение и защита интеллектуальной собственности",
                 type: "Лекция",
                 aud: 1216,
@@ -135,6 +144,7 @@ export default {
                 date: new Date()
             },
             {
+                id:3,
                 name: "Теория и методология научных исследований",
                 type: "Практика",
                 aud: 1216,
@@ -144,6 +154,7 @@ export default {
                 date: new Date()
             },
             {
+                id:4,
                 name: "Введение в распределенные технологии	",
                 type: "Лекция",
                 aud: 404,

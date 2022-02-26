@@ -66,7 +66,7 @@
 @import (less) url("../assets/_variables.less");
     .navigation {
         height: 64px;
-        width: 100%;
+        background: white;
         border-bottom: 1px solid @black10-color;
         display: flex;
         align-items: center;

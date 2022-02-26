@@ -10,6 +10,7 @@
             <div class="person__variable-block">
                 <clubs-card />
                 <ColleaguesCard />
+                <timetable-card />
             </div>
         </div>
         <div class="right__content">
@@ -17,16 +18,11 @@
                 <info-card/>
             </div>
             <div class="right__content-search search">
-                <select class="search__select">
-                    <option>
-                        Вся деятельность
-                        <span class="search__select-count">(345)</span>
-                    </option>
-                </select>
+                <my-select :options="activity_options" @selected="filterActivities" />
                 <b-form-input placeholder="Поиск" class="search__input"></b-form-input>
                 <b-button class="search__button">Найти</b-button>
             </div>
-            <activity-card class="person__activity" v-for="activity in activities" :key="activity.name" :activity="activity"/>
+            <activity-card class="person__activity" v-for="activity in filteredActivities" :key="activity.name" :activity="activity"/>
         </div> 
     </div>
 </template>
@@ -37,14 +33,44 @@ import ActivityCard from './UI/ActivityCard.vue'
 import ClubsCard from './UI/ClubsCard.vue'
 import ContactsCard from './UI/ContactsCard.vue'
 import ColleaguesCard from './UI/ColleaguesCard.vue'
+import TimetableCard from './UI/TimetableCard.vue'
 import PhotoCard from './UI/PhotoCard.vue'
+import MySelect from './UI/MySelect.vue'
     export default {
-        components: { PhotoCard, InfoCard, ActivityCard, ContactsCard, ClubsCard, ColleaguesCard },
+        components: { PhotoCard, InfoCard, ActivityCard, ContactsCard, ClubsCard, ColleaguesCard, TimetableCard, MySelect },
         name: "PersonalityPage",
+        data() {
+            return {
+                filteredActivities: null
+            }
+        },
         computed: {
             activities() {
                 return this.$store.state.user.activities
+            },
+            activity_options () {
+                const options = [
+                    {name: "Вся деятельность", value: this.activities.length},
+                    {name: "Проекты", value: this.activities.filter(a => a.option === "Проекты").length},
+                    {name: "РИД", value: this.activities.filter(a => a.option === "РИД").length},
+                    {name: "Публикации", value: this.activities.filter(a => a.option === "Публикации").length},
+                    {name: "Мероприятия", value: this.activities.filter(a => a.option === "Мероприятия").length},
+                ]
+                return options
             }
+        },
+        methods: {
+            filterActivities(option) {
+                if(option.name!=="Вся деятельность"){
+                    this.filteredActivities = this.activities.filter(a => a.option===option.name)
+                }
+                else {
+                    this.filteredActivities = this.activities
+                }
+            }
+        },
+        created() {
+            this.filteredActivities = this.activities
         }
     }
 </script>
@@ -90,32 +116,6 @@ import PhotoCard from './UI/PhotoCard.vue'
             .search {
                 margin-top: 24px;
                 display: flex;
-
-                &__select {
-                    background: @black5-color;
-                    border-color: @black5-color;
-                    border-right-width: 16px;
-                    border-left-width: 16px;
-                    border-bottom-width: 8px;
-                    border-top-width: 8px;
-                    color: @black100-color;
-                    font-weight: 600;
-                    font-size: 14px;
-                    padding-right: 12px;
-
-                    option {
-                        color: @black100-color;
-                        font-weight: 600;
-                        font-size: 14px;
-                    }
-
-                    &-count {
-                        color: @black40-color;
-                        font-size: 12px;
-                    }
-
-                    .rad();
-                }
 
                 &__input {
                     flex: 1;
