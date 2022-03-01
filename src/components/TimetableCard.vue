@@ -1,12 +1,6 @@
 <template>
     <div class="timetable">
-        <div class="timetable__panel panel" @click="openPanel">
-            <div class="panel__title">
-                Расписание
-            </div>
-            <img class="icon" :class="{'icon-close': opened}" :src="require('/src/assets/icons/Arrow.svg?data')"/>
-        </div>
-        <div class="timetable__content" v-if="opened">
+        <my-panel :title="'Расписание'">
             <div class="timetable__content__lesson lesson" v-for="lesson in timetable" :key="lesson.id">
                 <div class="lesson__time">
                     <div class="lesson__time-start">
@@ -34,7 +28,7 @@
             <div class="timetable__content__action" @click="show=true">
                 Подробнее
             </div>
-        </div>
+        </my-panel>
         <my-modal v-model="show">
         <template v-slot:title>
             <div>Расписание</div>
@@ -47,19 +41,14 @@
 <script>
 import ScheduleCard from './ScheduleCard.vue'
 import MyModal from './UI/MyModal.vue'
+import MyPanel from './UI/MyPanel.vue'
 
     export default {
-  components: { MyModal, ScheduleCard },
+  components: { MyModal, ScheduleCard, MyPanel },
         name: "TimetableCard",
         data() {
             return {
-                opened: false,
                 show: false
-            }
-        },
-        methods: {
-            openPanel() {
-                this.opened = !this.opened
             }
         },
         computed: {

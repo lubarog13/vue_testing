@@ -1,12 +1,6 @@
 <template>
     <div class="colleagues">
-        <div class="colleagues__panel panel" @click="openPanel">
-            <div class="panel__title">
-                Коллеги
-            </div>
-            <img class="icon" :class="{'icon-close': opened}" :src="require('/src/assets/icons/Arrow.svg?data')"/>
-        </div>
-        <div class="colleagues__content" v-if="opened">
+        <my-panel :title="'Коллеги'">
             <div class="colleagues__content__colleague colleague" v-for="colleague in colleagues" :key="colleague.name">
                 <b-avatar badge badge-variant="success" badge-left class="colleague__avatar" :src="require(`/src/assets/images/${colleague.image}`)"></b-avatar>
                 <div class="colleague__content">
@@ -15,23 +9,15 @@
                     <a href="#" class="colleague__content__action">Написать сообщение</a>
                 </div>
             </div>
-        </div>
+        </my-panel>
     </div>
 </template>
 
 <script>
+import MyPanel from './UI/MyPanel.vue'
     export default {
+  components: { MyPanel },
         name: "ColleaguesCard",
-        data() {
-            return {
-                opened: false
-            }
-        },
-        methods: {
-            openPanel() {
-                this.opened = !this.opened
-            }
-        },
         computed: {
             colleagues() {
                 return this.$store.state.user.colleagues
@@ -49,6 +35,11 @@
             margin-top: 8px;
             text-decoration: none;
         }
+    }
+
+    &__avatar {
+        width: 34px;
+        height: 34px
     }
 }
 </style>
