@@ -18,13 +18,18 @@
         <info-card />
       </div>
       <div class="right__content-search search">
-        <my-select :options="activity_options" @selected="filterActivities" />
-        <b-form-input placeholder="Поиск" class="search__input"></b-form-input>
-        <b-button class="search__button">Найти</b-button>
+        <my-select :options="activity_options" @selected="setOption" />
+        <b-form-input
+          placeholder="Поиск"
+          class="search__input"
+          @input="setSearchString"
+        ></b-form-input>
+        <b-button class="search__button" @click="searchQuery = search">Найти</b-button
+        >
       </div>
       <activity-card
         class="person__activity"
-        v-for="activity in filteredActivities"
+        v-for="activity in searchedAndFilteredActivities"
         :key="activity.id"
         :activity="activity"
       />
@@ -55,7 +60,9 @@ export default {
   name: "PersonalityPage",
   data() {
     return {
-      filteredActivities: null,
+      selectedOption: { name: "Вся деятельность" },
+      searchQuery: "",
+      search: "",
     };
   },
   computed: {
@@ -89,20 +96,28 @@ export default {
     role() {
       return this.$store.state.user.role;
     },
-  },
-  methods: {
-    filterActivities(option) {
-      if (option.name !== "Вся деятельность") {
-        this.filteredActivities = this.activities.filter(
-          (a) => a.option === option.name
+    filterActivities() {
+      if (this.selectedOption.name !== "Вся деятельность") {
+        return this.activities.filter(
+          (a) => a.option === this.selectedOption.name
         );
       } else {
-        this.filteredActivities = this.activities;
+        return this.activities;
       }
     },
+    searchedAndFilteredActivities() {
+      return this.filterActivities.filter((a) =>
+        a.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
   },
-  mounted() {
-    this.filteredActivities = this.activities;
+  methods: {
+    setSearchString(val) {
+      this.search = val;
+    },
+    setOption(option) {
+      this.selectedOption = option;
+    },
   },
 };
 </script>
