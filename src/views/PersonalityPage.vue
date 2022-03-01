@@ -25,7 +25,7 @@
       <activity-card
         class="person__activity"
         v-for="activity in filteredActivities"
-        :key="activity.name"
+        :key="activity.id"
         :activity="activity"
       />
     </div>
@@ -101,7 +101,7 @@ export default {
       }
     },
   },
-  created() {
+  mounted() {
     this.filteredActivities = this.activities;
   },
 };

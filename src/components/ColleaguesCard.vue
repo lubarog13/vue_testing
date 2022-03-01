@@ -4,7 +4,7 @@
       <div
         class="colleagues__content__colleague colleague"
         v-for="colleague in colleagues"
-        :key="colleague.name"
+        :key="colleague.id"
       >
         <b-avatar
           badge

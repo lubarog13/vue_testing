@@ -61,7 +61,6 @@ export default {
       display: flex;
       flex-direction: column;
       margin-left: 8px;
-      font-weight: 400;
       font-size: 14px;
       &-comment {
         margin-top: 4px;

@@ -86,29 +86,32 @@
           />
         </b-button>
       </div>
-        <div class="about__value-hidden" v-if="opened">
-          <div
-            class="about__value-column"
-            v-for="position in user_positions"
-            :key="position.id"
-          >
-            <a class="about__value">
-              {{ position.position }}
-              <my-badge
-                v-if="position.vacation"
-                :text="`в отпуске с ${position.vacation.start_date.toLocaleDateString()} по ${position.vacation.end_date.toLocaleDateString()}`"
-                :title="'отпуск'"
-                :variant="'blue'"
-                :id="position.position + position.id"
-                class="about__value-vacation"
-              />
-            </a>
-            <div class="about__value">
-              {{ position.role }}
-            </div>
+      <div class="about__value-hidden" v-if="opened">
+        <div
+          class="about__value-column"
+          v-for="position in user_positions"
+          :key="position.id"
+        >
+          <a class="about__value">
+            {{ position.position }}
+            <my-badge
+              v-if="position.vacation"
+              :text="`в отпуске с ${position.vacation.start_date.toLocaleDateString()} по ${position.vacation.end_date.toLocaleDateString()}`"
+              :title="'отпуск'"
+              :variant="'blue'"
+              :id="position.position + position.id"
+              class="about__value-vacation"
+            />
+          </a>
+          <div class="about__value">
+            {{ position.role }}
           </div>
         </div>
-      <div class="about__row">
+      </div>
+      <div
+        class="about__row"
+        :class="{ 'about__row-employee': employeeClosedRow }"
+      >
         <div class="about__label">Полномочия:</div>
         <div class="about__value-column">
           <a class="about__value">
@@ -119,22 +122,20 @@
           </div>
         </div>
       </div>
-      <transition name="fall">
-        <div class="about__value-hidden" v-if="opened">
-          <div
-            class="about__value-column"
-            v-for="power in user_powers"
-            :key="power.id"
-          >
-            <a class="about__value">
-              {{ power.power }}
-            </a>
-            <div class="about__value">
-              {{ power.role }}
-            </div>
+      <div class="about__value-hidden" v-if="opened">
+        <div
+          class="about__value-column"
+          v-for="power in user_powers"
+          :key="power.id"
+        >
+          <a class="about__value">
+            {{ power.power }}
+          </a>
+          <div class="about__value">
+            {{ power.role }}
           </div>
         </div>
-      </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -173,16 +174,19 @@ export default {
       exchange: (state) => state.user.exchange,
     }),
     user_positions() {
-      if (this.positions.length>1) {
+      if (this.positions.length > 1) {
         return this.positions.slice(1);
       }
       return null;
     },
     user_powers() {
-      if (this.powers.length>1) {
+      if (this.powers.length > 1) {
         return this.powers.slice(1);
       }
       return null;
+    },
+    employeeClosedRow() {
+      return this.role === "employee" || this.role === "teacher";
     },
   },
 };
@@ -207,7 +211,6 @@ export default {
     &-isu {
       text-align: left;
       margin-left: 16px;
-      font-weight: 400;
       font-size: 16px;
       color: @black40-color;
       align-self: center;
@@ -226,7 +229,6 @@ export default {
   .about {
     margin-top: 24px;
     font-size: 14px;
-    font-weight: 400;
 
     &:nth-child(3) {
       margin-top: 12px;
@@ -237,6 +239,10 @@ export default {
       flex-direction: row;
       &:last-child {
         margin-bottom: 0;
+      }
+
+      &-employee {
+        margin-top: 24px;
       }
     }
 

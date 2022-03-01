@@ -58,7 +58,6 @@ export default {
   }
   .user__photo-info {
     margin-top: 16px;
-    font-weight: 400;
     font-size: 12px;
     color: @black40-color;
     display: flex;

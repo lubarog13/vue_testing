@@ -1,5 +1,15 @@
 # test_project
 
+## Страница персоналий
+
+![Screenshot](screenshot.png)
+
+Для изменения типа пользователя измените параметр role в модуле userModule памяти Vuex. Возможные значаения:
+* _employee_ - сотрудник
+* _student_ - студент
+* _teacher_ - преподаватель
+* *student_employee* - студент+сотрудник
+
 ## Project setup
 ```
 npm install

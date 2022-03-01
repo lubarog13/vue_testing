@@ -116,7 +116,6 @@ export default {
 
       .date {
         justify-content: flex-end;
-        font-weight: 400;
 
         &__title {
           font-size: 14px;
@@ -155,8 +154,7 @@ export default {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          font-weight: 400;
-
+          
           .profile__name {
             font-size: 16px;
           }

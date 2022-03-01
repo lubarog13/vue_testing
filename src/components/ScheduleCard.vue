@@ -57,6 +57,7 @@
 <script>
 import MyCalendar from "./UI/MyCalendar.vue";
 import dayjs from "dayjs";
+require("dayjs/locale/ru");
 export default {
   components: { MyCalendar },
   name: "ScheduleCard",
@@ -88,9 +89,6 @@ export default {
     showCalendar() {
       this.calendar = !this.calendar;
     },
-  },
-  created() {
-    require("dayjs/locale/ru");
   },
 };
 </script>

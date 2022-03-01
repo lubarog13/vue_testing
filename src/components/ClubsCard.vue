@@ -60,7 +60,6 @@ export default {
     }
 
     &__role {
-      font-weight: 400;
       color: @black40-color;
     }
   }

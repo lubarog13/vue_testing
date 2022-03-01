@@ -54,7 +54,6 @@ export default {
   }
 
   &__name {
-    font-weight: 400;
     font-size: 16px;
     padding-left: 8px;
   }

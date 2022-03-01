@@ -1,6 +1,6 @@
 export default {
   state: () => ({
-    role: "teacher",
+    role: "student",
     last_name: "Абдуллаев",
     first_name: "Вячеслав",
     second_name: "Эмильевич",
@@ -98,6 +98,7 @@ export default {
     },
     activities: [
       {
+        id: 1,
         type: "НИР",
         name: "STARTUP CONNECT- содействие стартапам, предпринимательству и сотрудничеству малых и средних предприятий в приграничном регионе",
         role: "Участник",
@@ -106,6 +107,7 @@ export default {
         option: "Публикации",
       },
       {
+        id: 2,
         type: "Конференция",
         name: "Hult Prize 2021 Saint Petersburg Impact Summit",
         role: "Ответственный исполнитель",
@@ -114,6 +116,7 @@ export default {
         option: "Мероприятия",
       },
       {
+        id: 3,
         type: "Интервью",
         name: "Карьера в сфере устойчивого развития: карьерный путь",
         role: "Волонтер",
@@ -122,6 +125,7 @@ export default {
         option: "Мероприятия",
       },
       {
+        id: 4,
         type: "Интервью",
         name: "Карьера в сфере устойчивого развития: медиа-проекты",
         role: "Ответственный исполнитель",
@@ -171,6 +175,7 @@ export default {
     ],
     colleagues: [
       {
+        id: 1,
         last_name: "Шабанин",
         first_name: "Семён",
         second_name: "Олегович",
@@ -178,6 +183,7 @@ export default {
         image: "Shabanin.png",
       },
       {
+        id: 2,
         last_name: "Веденский",
         first_name: "Владислав",
         second_name: "Олегович",

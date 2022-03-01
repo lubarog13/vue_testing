@@ -108,8 +108,8 @@ export default {
     &__type {
       font-size: 10px;
       color: @white100-color;
-      padding: 2px 6px 3px;
       font-weight: 400;
+      padding: 2.5px 6px 3px;
       height: 16px;
     }
 

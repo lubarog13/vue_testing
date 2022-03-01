@@ -66,7 +66,6 @@ export default {
 
     &-name {
       margin-top: 2px;
-      font-weight: 400;
       font-size: 16px;
     }
     &-role {
@@ -83,7 +82,6 @@ export default {
     text-align: end;
     color: @black40-color;
     font-size: 12px;
-    font-weight: 400;
   }
 }
 </style>
