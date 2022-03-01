@@ -12,7 +12,7 @@
 <script>
 import Menu from './components/Menu.vue'
 import Navigation from './components/Navigation.vue'
-import PersonalityPage from './components/PersonalityPage.vue'
+import PersonalityPage from './views/PersonalityPage.vue'
 
 export default {
   name: 'App',
@@ -86,6 +86,8 @@ export default {
       border-radius: 12px;
       font-weight: 600;
       font-size: 12px;
+      cursor: default;
+      text-align: center;
     }
     
 </style>

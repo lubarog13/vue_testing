@@ -8,7 +8,8 @@
                 {{isu}}
             </div>
             <div class="info__main-exchange" v-if="exchange">
-                <div class="custom-badge" id="tooltip-target-1" @mouseover="active=true" @mouseleave="active=false">
+                <div class="exchange" :class="{'exchange-active': active}">
+                    <div class="custom-badge" id="tooltip-target-1" @mouseover="active=true" @mouseleave="active=false">
                     семестровый обмен
                 </div>
                 <div class="arrow_up" target="tooltip-target-1" triggers="hover" v-show="active">
@@ -16,6 +17,7 @@
                 <b-tooltip target="tooltip-target-1" triggers="hover" placement="bottom" variant="success">
                     направлен на обучение в вуз-партнер с {{exchange.start_date.toLocaleDateString()}} по {{exchange.end_date.toLocaleDateString()}}
                 </b-tooltip>
+                </div>
             </div>
         </div>
         <div class="info__about about" v-if="role==='student'||role==='student_employee'">
@@ -168,7 +170,10 @@ import { mapState } from 'vuex'
 
 <style lang="less" scoped>
 @import (less) url("../assets/_variables.less");
+@padding-exchange: 4px;
     .info {
+        .bordered_box();
+        .pad2();
         &__main {
             display: flex;
             &-name {
@@ -190,14 +195,23 @@ import { mapState } from 'vuex'
             }
             &-exchange {
                 margin-left: 16px;
-                padding-left: 16px;
+                padding: 0 16px;
                 border-left: @st_border;
-                position: relative;
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
+                padding-top: @padding-exchange;
 
-                .custom-badge {
+                .exchange {
+                    padding: 5px 0 9.5px 0;
+                    display: flex;
+                    flex-direction: column;
+                    @padding-exchange: 4px;
+                    &-active {
+                        padding: 5px 0 0 0;
+                        @padding-exchange: 0;
+                    }
+                    .custom-badge {
                     color: @secondary7-color;
                     background: @secondary710-color;
                     
@@ -207,6 +221,7 @@ import { mapState } from 'vuex'
                         
                     }
 
+                }
                 }
             }
         }

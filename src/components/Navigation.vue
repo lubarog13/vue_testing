@@ -101,6 +101,7 @@
                 &__search {
                     padding-left: 0;
                     width: fit-content;
+                    cursor: pointer;
                 }
 
                 .date {

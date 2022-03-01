@@ -54,7 +54,8 @@
 <style lang="less" scoped>
 @import (less) url("/src/assets/_variables.less");
 .user__photo-wrap {
-
+    .bordered_box();
+    .pad1();
     .user__photo {
         width: 230px;
         height: 230px;

@@ -28,14 +28,14 @@
 </template>
 
 <script>
-import InfoCard from './InfoCard.vue'
-import ActivityCard from './UI/ActivityCard.vue'
-import ClubsCard from './UI/ClubsCard.vue'
-import ContactsCard from './UI/ContactsCard.vue'
-import ColleaguesCard from './UI/ColleaguesCard.vue'
-import TimetableCard from './UI/TimetableCard.vue'
-import PhotoCard from './UI/PhotoCard.vue'
-import MySelect from './UI/MySelect.vue'
+import InfoCard from '../components/InfoCard.vue'
+import ActivityCard from '../components/ActivityCard.vue'
+import ClubsCard from '../components/ClubsCard.vue'
+import ContactsCard from '../components/ContactsCard.vue'
+import ColleaguesCard from '../components/ColleaguesCard.vue'
+import TimetableCard from '../components/TimetableCard.vue'
+import PhotoCard from '../components/PhotoCard.vue'
+import MySelect from '../components/UI/MySelect.vue'
     export default {
         components: { PhotoCard, InfoCard, ActivityCard, ContactsCard, ClubsCard, ColleaguesCard, TimetableCard, MySelect },
         name: "PersonalityPage",
@@ -88,11 +88,6 @@ import MySelect from './UI/MySelect.vue'
             flex-direction: column;
 
 
-            .person__photo {
-                .bordered_box();
-                .pad1()
-            }
-
             .person__contacts {
                 margin-top: 24px;
             }
@@ -107,11 +102,6 @@ import MySelect from './UI/MySelect.vue'
             flex: 1;
             flex-direction: column;
             margin-left: 23px;
-
-            .person__info {
-                .bordered_box();
-                .pad2()
-            }
 
             .search {
                 margin-top: 24px;

@@ -31,17 +31,30 @@
                     </div>
                 </div>
             </div>
+            <div class="timetable__content__action" @click="show=true">
+                Подробнее
+            </div>
         </div>
+        <my-modal v-model="show">
+        <template v-slot:title>
+            <div>Расписание</div>
+        </template>
+        <schedule-card />
+        </my-modal>
     </div>
 </template>
 
 <script>
+import ScheduleCard from './ScheduleCard.vue'
+import MyModal from './UI/MyModal.vue'
 
     export default {
+  components: { MyModal, ScheduleCard },
         name: "TimetableCard",
         data() {
             return {
-                opened: false
+                opened: false,
+                show: false
             }
         },
         methods: {
@@ -125,5 +138,14 @@
             }
 
         }
+    }
+
+    .timetable__content__action {
+        color: @primary-blue-color;
+        cursor: pointer;
+        padding: 4px 8px;
+        margin-top: 16px;
+        font-size: 12px;
+        text-align: center;
     }
 </style>
