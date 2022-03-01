@@ -1,6 +1,6 @@
 export default {
   state: () => ({
-    role: "student",
+    role: "teacher",
     last_name: "Абдуллаев",
     first_name: "Вячеслав",
     second_name: "Эмильевич",
@@ -234,5 +234,36 @@ export default {
       },
     ],
   }),
+  getters: {
+    getLessonsByDay: (state) => ({day}) => {
+        return state.timetable.filter((lesson) => lesson.date.toDateString() === day.toDateString());
+    },
+    getFilteredActivities: (state) => ({filter}) => {
+        if(filter.name !== "Вся деятельность") {
+            return state.activities.filter(
+              (a) => a.option === filter.name
+            );
+          } else {
+            return state.activities;
+        }
+    },
+    getSearchedAndFilteredActivities: (state, getters) => ({searchQuery, filter}) => {
+        return getters.getFilteredActivities({filter}).filter((a) =>
+            a.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+    },
+    getPositions(state) {
+        if (state.positions.length > 1) {
+            return state.positions.slice(1);
+        }
+          return null;
+    },
+    getPowers(state) {
+        if (state.powers.length > 1) {
+            return state.powers.slice(1);
+          }
+        return null;
+    }
+  },
   namespaced: true,
 };

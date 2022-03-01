@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import ScheduleCard from "./ScheduleCard.vue";
 import MyModal from "./UI/MyModal.vue";
 import MyPanel from "./UI/MyPanel.vue";
@@ -65,11 +66,12 @@ export default {
     };
   },
   computed: {
+    ...mapGetters ({
+        getLessonsByDay: 'user/getLessonsByDay'
+    }),
     timetable() {
-      return this.$store.state.user.timetable.filter(
-        (lesson) => lesson.date.toDateString() === new Date().toDateString()
-      );
-    },
+        return this.getLessonsByDay({day: new Date()})
+    }
   },
 };
 </script>

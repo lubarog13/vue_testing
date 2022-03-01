@@ -57,6 +57,7 @@
 <script>
 import MyCalendar from "./UI/MyCalendar.vue";
 import dayjs from "dayjs";
+import { mapGetters } from 'vuex';
 require("dayjs/locale/ru");
 export default {
   components: { MyCalendar },
@@ -68,12 +69,11 @@ export default {
     };
   },
   computed: {
+    ...mapGetters ({
+        getLessonsByDay: 'user/getLessonsByDay'
+    }),
     timetable() {
-      return this.$store.state.user.timetable.filter(
-        (lesson) =>
-          lesson.date.toDateString() ===
-          this.selectedDate.toDate().toDateString()
-      );
+        return this.getLessonsByDay({day: new Date()})
     },
     formattedDate() {
       return this.selectedDate.locale("ru").format("DD MMMM YYYY");

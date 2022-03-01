@@ -46,6 +46,7 @@ import ColleaguesCard from "../components/ColleaguesCard.vue";
 import TimetableCard from "../components/TimetableCard.vue";
 import PhotoCard from "../components/PhotoCard.vue";
 import MySelect from "../components/UI/MySelect.vue";
+import { mapGetters } from 'vuex';
 export default {
   components: {
     PhotoCard,
@@ -66,6 +67,9 @@ export default {
     };
   },
   computed: {
+    ...mapGetters ({
+        searchedActivities: 'user/getSearchedAndFilteredActivities'
+    }),
     activities() {
       return this.$store.state.user.activities;
     },
@@ -96,19 +100,8 @@ export default {
     role() {
       return this.$store.state.user.role;
     },
-    filterActivities() {
-      if (this.selectedOption.name !== "Вся деятельность") {
-        return this.activities.filter(
-          (a) => a.option === this.selectedOption.name
-        );
-      } else {
-        return this.activities;
-      }
-    },
     searchedAndFilteredActivities() {
-      return this.filterActivities.filter((a) =>
-        a.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
+      return this.searchedActivities({searchQuery: this.searchQuery, filter: this.selectedOption})
     },
   },
   methods: {

@@ -141,7 +141,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import MyBadge from "./UI/MyBadge.vue";
 export default {
   components: { MyBadge },
@@ -173,18 +173,10 @@ export default {
       powers: (state) => state.user.powers,
       exchange: (state) => state.user.exchange,
     }),
-    user_positions() {
-      if (this.positions.length > 1) {
-        return this.positions.slice(1);
-      }
-      return null;
-    },
-    user_powers() {
-      if (this.powers.length > 1) {
-        return this.powers.slice(1);
-      }
-      return null;
-    },
+    ...mapGetters ({
+        user_positions: 'user/getPositions',
+        user_powers: 'user/getPowers'
+    }),
     employeeClosedRow() {
       return this.role === "employee" || this.role === "teacher";
     },
