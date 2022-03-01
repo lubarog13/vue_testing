@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import MyPanel from './UI/MyPanel.vue';
+import MyPanel from "./UI/MyPanel.vue";
 export default {
   components: { MyPanel },
   name: "ClubsCard",

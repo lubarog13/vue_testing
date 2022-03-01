@@ -1,20 +1,18 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import profileModule from './profileModule'
-import userModule from './userModule'
+import Vue from "vue";
+import Vuex from "vuex";
+import profileModule from "./profileModule";
+import userModule from "./userModule";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    country: "rus"
+    country: "rus",
   },
-  mutations: {
-  },
-  actions: {
-  },
+  mutations: {},
+  actions: {},
   modules: {
     profile: profileModule,
-    user: userModule
-  }
-})
+    user: userModule,
+  },
+});
