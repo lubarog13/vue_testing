@@ -65,7 +65,6 @@
 
             &-name {
                 margin-top: 2px;
-                color: @black100-color;
                 font-weight: 400;
                 font-size: 16px;
             }

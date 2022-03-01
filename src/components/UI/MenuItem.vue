@@ -57,7 +57,7 @@
 
         &__badge {
             background-color: @secondary5-color;
-            color: white;
+            color: @white100-color;
             font-weight: 600;
             font-size: 12px;
             border-radius: 24px;

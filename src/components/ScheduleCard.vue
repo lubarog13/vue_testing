@@ -76,11 +76,10 @@ import dayjs from 'dayjs'
         position: relative;
 
         .btn {
-            background: white;
+            background: @white100-color;
             &:hover {
                 background: @black5-color;
                 border: none;
-                color: @black100-color;
             }
 
         }
@@ -111,7 +110,6 @@ import dayjs from 'dayjs'
             padding: 4px 8px;
             font-weight: 600;
             font-size: 12px;
-            color: @black100-color;
         }
 
         &__back img {
@@ -149,7 +147,6 @@ import dayjs from 'dayjs'
                 &-start {
                     font-weight: 700;
                     font-size: 16px;
-                    color: @black100-color;
                 }
 
                 &-end {
@@ -177,13 +174,11 @@ import dayjs from 'dayjs'
                 padding-right: 16px;
                 border-right: @st_border;
                 font-size: 14px;
-                color: @black100-color;
                 flex: 1;
             }
 
             &__place {
                 padding: 0 16px;
-                color: @black100-color;
                 border-right: @st_border;
                 flex: 1;
 
@@ -213,7 +208,6 @@ import dayjs from 'dayjs'
 
     &__not_found {
         margin-top: 24px;
-        color: @black100-color;
         display: flex;
         align-items: center;
         justify-content: center;

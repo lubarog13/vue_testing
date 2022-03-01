@@ -103,7 +103,7 @@ import MyModal from './UI/MyModal.vue'
             margin-left: 9px;
             &__type {
                 font-size: 10px;
-                color: white;
+                color: @white100-color;
                 padding: 2px 6px 3px;
                 font-weight: 400;
                 height: 16px;
@@ -121,7 +121,6 @@ import MyModal from './UI/MyModal.vue'
 
             &__name {
                 font-size: 14px;
-                color: @black100-color;
                 margin-top: 4px;
             }
 

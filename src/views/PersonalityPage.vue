@@ -8,9 +8,9 @@
                 <contacts-card />
             </div>
             <div class="person__variable-block">
-                <clubs-card />
-                <ColleaguesCard />
-                <timetable-card />
+                <timetable-card v-if="role==='teacher'"/>
+                <ColleaguesCard v-else-if="role==='employee'" />
+                <clubs-card v-else/>
             </div>
         </div>
         <div class="right__content">
@@ -57,6 +57,9 @@ import MySelect from '../components/UI/MySelect.vue'
                     {name: "Мероприятия", value: this.activities.filter(a => a.option === "Мероприятия").length},
                 ]
                 return options
+            },
+            role() {
+                return this.$store.state.user.role
             }
         },
         methods: {

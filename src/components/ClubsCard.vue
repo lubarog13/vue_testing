@@ -61,7 +61,6 @@
             flex: 1;
             font-weight: 700;
             font-size: 16px;
-            color: @black100-color;
         }
     }
 
@@ -88,7 +87,6 @@
                 &__title,
                 &__name {
                     font-weight: 700;
-                    color: @black100-color;
                 }
 
                 &__role {

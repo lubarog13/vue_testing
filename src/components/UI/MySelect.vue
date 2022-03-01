@@ -51,7 +51,7 @@
 <style lang="less" scoped>
 @import (less) url("/src/assets/_variables.less");
 .select {
-    width: 226px;
+    width: 219px;
     display: flex;
     position: relative;
     cursor: pointer;
@@ -59,7 +59,7 @@
     .panel {
         display: flex;
         padding: 8px 16px;
-        align-items: center;
+        align-items: flex-end;
         font-weight: 600;
         height: 36px;
         border-radius: 6px;
@@ -86,7 +86,7 @@
 
         &-active {
             background-color: @primary-blue-color;
-            color: white;
+            color: @white100-color;
             .panel__option-value {
                 color: rgba(255, 255, 255, 0.4);
             }
@@ -101,10 +101,10 @@
         flex-direction: column;
         z-index: 99;
         width: 100%;
-        background: white;
+        background: @white100-color;
         padding: 4px 1px;
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
-        border-radius: 6px;
+        .rad();
         border: 1px solid @black5-color;
 
         &__item {

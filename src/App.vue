@@ -29,6 +29,7 @@ export default {
 @import (less) url("./assets/_variables.less");
   #app {
     font-family: "Open Sans";
+    color: @black100-color;
     height: 100vh;
     .app__menu {
       position: fixed;
@@ -55,7 +56,7 @@ export default {
       position: fixed;
       left: 247px;
       top: 47px;
-      background: white;
+      background: @white100-color;
       transform: rotate(0.25turn);
       border: 1px solid @black5-color;
       display: flex;

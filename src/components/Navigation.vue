@@ -66,7 +66,7 @@
 @import (less) url("../assets/_variables.less");
     .navigation {
         height: 64px;
-        background: white;
+        background: @white100-color;
         border-bottom: 1px solid @black10-color;
         display: flex;
         align-items: center;
@@ -82,7 +82,6 @@
              font-weight: 700;
              font-size: 30px;
              flex: 1;
-             color: @black100-color;
             }
             
             .main {
@@ -109,7 +108,6 @@
                     font-weight: 400;
 
                     &__title {
-                        color: @black100-color;
                         font-size: 14px;
                         &::first-letter {
                             text-transform: capitalize;
@@ -149,9 +147,7 @@
                         font-weight: 400;
 
                         .profile__name {
-                            font-size: 16px;
-                            color: @black100-color;
-                        }
+                            font-size: 16px;                        }
 
                         .profile__isu {
                             font-size: 14px;

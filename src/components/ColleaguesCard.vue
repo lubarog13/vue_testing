@@ -59,7 +59,7 @@
         background: @secondary6-color;
         width: 10px;
         height: 10px;
-        border: 2px solid white;
+        border: 2px solid @white100-color;
         min-width: 0 !important;
         min-height: 0 !important;
     }

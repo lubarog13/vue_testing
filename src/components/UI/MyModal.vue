@@ -46,7 +46,7 @@
         margin: auto;
         min-height: 50px;
         min-width: 300px;
-        background: white;
+        background: @white100-color;
         .rad();
 
         &__heading {

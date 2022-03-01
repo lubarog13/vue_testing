@@ -88,6 +88,7 @@ import MenuItem from './UI/MenuItem.vue';
     height: 100%;
     width: 264px;
     border-right: @st_border;
+    background: @white100-color;
     &__container {
         padding: 24px 16px;
     }

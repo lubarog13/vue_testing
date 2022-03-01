@@ -30,7 +30,6 @@
 .contacts {
     .bordered_box();
     .pad1();
-    color: @black100-color;
 
     h2 {
         font-weight: 700;

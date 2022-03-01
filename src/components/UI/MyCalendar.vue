@@ -188,7 +188,7 @@ dayjs.extend(weekOfYear);
 .calendar {
     width: 296px;
     .pad1();
-    background: white;
+    background: @white100-color;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
 
@@ -222,7 +222,7 @@ dayjs.extend(weekOfYear);
             align-items: center;
             justify-content: center;
             padding: 4px;
-            background: white;
+            background: @white100-color;
 
             &:hover {
                 border: @st_border !important;
@@ -267,7 +267,7 @@ dayjs.extend(weekOfYear);
             height: 24px;
             border-radius: 4px;
             cursor: pointer;
-            background: white;
+            background: @white100-color;
             color: @black20-color;
             font-size: 14px;
             padding: 2px 3.5px;
@@ -336,7 +336,7 @@ dayjs.extend(weekOfYear);
 
             &__selected {
                 background: @primary-blue-color;
-                color: white;
+                color: @white100-color;
             }
         }
     }

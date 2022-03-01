@@ -8,16 +8,12 @@
                 {{isu}}
             </div>
             <div class="info__main-exchange" v-if="exchange">
-                <div class="exchange" :class="{'exchange-active': active}">
-                    <div class="custom-badge" id="tooltip-target-1" @mouseover="active=true" @mouseleave="active=false">
-                    семестровый обмен
-                </div>
-                <div class="arrow_up" target="tooltip-target-1" triggers="hover" v-show="active">
-                </div>
-                <b-tooltip target="tooltip-target-1" triggers="hover" placement="bottom" variant="success">
-                    направлен на обучение в вуз-партнер с {{exchange.start_date.toLocaleDateString()}} по {{exchange.end_date.toLocaleDateString()}}
-                </b-tooltip>
-                </div>
+                <my-badge 
+                :text="`направлен на обучение в вуз-партнер с ${exchange.start_date.toLocaleDateString()} по ${exchange.end_date.toLocaleDateString()}`"
+                :title="'семестровый обмен'"
+                :variant="'orange'" 
+                :id="'exchange'"
+                />
             </div>
         </div>
         <div class="info__about about" v-if="role==='student'||role==='student_employee'">
@@ -33,17 +29,17 @@
                 <div class="about__label">
                     Факультет:
                 </div>
-                <router-link class="about__value">
+                <a class="about__value">
                     {{faculty}}
-                </router-link>
+                </a>
             </div>
             <div class="about__row">
                 <div class="about__label">
                     Обр. программа:
                 </div>
-                <router-link class="about__value">
+                <a class="about__value">
                     {{op}}
-                </router-link>
+                </a>
             </div>
             <div class="about__row">
                 <div class="about__label">
@@ -57,9 +53,9 @@
                 <div class="about__label">
                     Группа:
                 </div>
-                <router-link class="about__value">
+                <a class="about__value">
                     {{group}}
-                </router-link>
+                </a>
             </div>
         </div>
         <div class="info__about about" v-if="role==='employee'||role==='student_employee'||role==='teacher'">
@@ -68,9 +64,17 @@
                     Должности:
                 </div>
                 <div class="about__value-column">
-                    <router-link class="about__value">
+                    <a class="about__value">
                     {{positions[0].position}}
-                    </router-link>
+                        <my-badge 
+                        v-if="positions[0].vacation"
+                        :text="`в отпуске с ${positions[0].vacation.start_date.toLocaleDateString()} по ${positions[0].vacation.end_date.toLocaleDateString()}`"
+                        :title="'отпуск'"
+                        :variant="'blue'"
+                        :id="positions[0].position + positions[0].id"
+                        class="about__value-vacation"
+                        />
+                    </a>
                     <div class="about__value">
                         {{positions[0].role}}
                     </div>
@@ -80,12 +84,21 @@
                     <img :src="require('/src/assets/icons/Arrow.svg?data')" class="icon" :class="{'icon-close': opened}">
                 </b-button>
             </div>
+
             <transition name="fall">
             <div class="about__value-hidden" v-if="opened">
-                    <div class="about__value-column" v-for="position in user_positions" :key="position.position">
-                    <router-link class="about__value">
+                    <div class="about__value-column" v-for="position in user_positions" :key="position.id">
+                    <a class="about__value">
                     {{position.position}}
-                    </router-link>
+                    <my-badge 
+                        v-if="position.vacation"
+                        :text="`в отпуске с ${position.vacation.start_date.toLocaleDateString()} по ${position.vacation.end_date.toLocaleDateString()}`"
+                        :title="'отпуск'"
+                        :variant="'blue'"
+                        :id="position.position + position.id"
+                        class="about__value-vacation"
+                        />
+                    </a>
                     <div class="about__value">
                         {{position.role}}
                     </div>
@@ -97,9 +110,9 @@
                     Полномочия:
                 </div>
                 <div class="about__value-column">
-                    <router-link class="about__value">
+                    <a class="about__value">
                     {{powers[0].power}}
-                    </router-link>
+                    </a>
                     <div class="about__value">
                         {{powers[0].role}}
                     </div>
@@ -107,10 +120,10 @@
             </div>
             <transition name="fall">
             <div class="about__value-hidden" v-if="opened">
-                    <div class="about__value-column" v-for="power in user_powers" :key="power.power">
-                    <router-link class="about__value">
+                    <div class="about__value-column" v-for="power in user_powers" :key="power.id">
+                    <a class="about__value">
                     {{power.power}}
-                    </router-link>
+                    </a>
                     <div class="about__value">
                         {{power.role}}
                     </div>
@@ -123,7 +136,9 @@
 
 <script>
 import { mapState } from 'vuex'
+import MyBadge from './UI/MyBadge.vue'
     export default {
+  components: { MyBadge },
         name: "InfoCard",
         data() {
             return {
@@ -177,7 +192,6 @@ import { mapState } from 'vuex'
         &__main {
             display: flex;
             &-name {
-                color: @black100-color;
                 font-size: 24px;
                 font-weight: 700;
                 padding-right: 16px;
@@ -200,29 +214,7 @@ import { mapState } from 'vuex'
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
-                padding-top: @padding-exchange;
-
-                .exchange {
-                    padding: 5px 0 9.5px 0;
-                    display: flex;
-                    flex-direction: column;
-                    @padding-exchange: 4px;
-                    &-active {
-                        padding: 5px 0 0 0;
-                        @padding-exchange: 0;
-                    }
-                    .custom-badge {
-                    color: @secondary7-color;
-                    background: @secondary710-color;
-                    
-                    &:hover {
-                        background: @secondary7-color;
-                        color: @secondary710-color;
-                        
-                    }
-
-                }
-                }
+                padding-bottom: 4px;
             }
         }
 
@@ -231,9 +223,10 @@ import { mapState } from 'vuex'
             font-size: 14px;
             font-weight: 400;
 
-            &:last-child {
+            &:nth-child(3) {
                 margin-top: 12px;
             }
+
 
             &__row {
                 display: flex;
@@ -255,7 +248,11 @@ import { mapState } from 'vuex'
             &__value {
                 flex: 1;
                 margin-left: 24px;
-                color: @black100-color;
+
+                &-vacation {
+                    margin-left: 24px;
+                    padding: 0;
+                }
 
             }
 
@@ -275,7 +272,7 @@ import { mapState } from 'vuex'
 
             }
 
-            router-link.about__value {
+            a.about__value {
                 text-decoration: none;
                 color: @primary-blue-color;
                 cursor: pointer;
@@ -303,33 +300,4 @@ import { mapState } from 'vuex'
         }
     }
 
-/*     .fall-enter-active, .fall-leave-active {
-        transition: height 1.5s;
-    }
-    .fall-enter, .fall-leave-to  {
-        height: 0;
-        overflow: hidden;
-    } */
-
-</style>
-
-<style lang="less">
-@import (less) url("../assets/_variables.less");
-    .tooltip.b-tooltip-success .tooltip-inner {
-        background: @black100-color !important;
-        opacity: 1 !important;
-        font-size: 12px;
-        margin-top: 2px !important;
-        top: -2px;
-    }
-
-    .arrow_up {
-        width: 0;
-        height: 0;
-        padding-top: 4px;
-        align-self: center;
-        border-style: solid;
-        border-width: 0 5.25px 5.5px 5.25px;
-        border-color: transparent transparent @black100-color transparent;
-    }
 </style>
