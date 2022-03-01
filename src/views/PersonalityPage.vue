@@ -145,7 +145,7 @@ export default {
 
       &__button {
         background: @primary-blue-color;
-        color: white;
+        color: @white100-color;
         border: none;
         font-weight: 600;
         font-size: 14px;
