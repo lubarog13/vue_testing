@@ -38,11 +38,11 @@
           </div>
         </div>
       </div>
-      <div class="timetable__content__action" @click="show = true">
+      <div class="timetable__content__action" @click="active = true">
         Подробнее
       </div>
     </my-panel>
-    <my-modal v-model="show">
+    <my-modal v-model="active">
       <template v-slot:title>
         <div>Расписание</div>
       </template>
@@ -56,15 +56,12 @@ import { mapGetters } from 'vuex';
 import ScheduleCard from "./ScheduleCard.vue";
 import MyModal from "./UI/MyModal.vue";
 import MyPanel from "./UI/MyPanel.vue";
+import activeStateMixin from '../mixins/activeStateMixin'
 
 export default {
   components: { MyModal, ScheduleCard, MyPanel },
   name: "TimetableCard",
-  data() {
-    return {
-      show: false,
-    };
-  },
+  mixins: [activeStateMixin],
   computed: {
     ...mapGetters ({
         getLessonsByDay: 'user/getLessonsByDay'

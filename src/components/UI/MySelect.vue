@@ -2,8 +2,8 @@
   <div class="select">
     <div
       class="select__panel panel"
-      @click="openPanel"
-      :class="{ 'panel-active': opened }"
+      @click="setActive"
+      :class="{ 'panel-active': active }"
     >
       <div class="panel__option-name">
         {{ selectedOption.name }}
@@ -11,11 +11,11 @@
       <div class="panel__option-value">({{ selectedOption.value }})</div>
       <img
         class="icon"
-        :class="{ 'icon-close': opened }"
+        :class="{ 'icon-close': active }"
         :src="require('/src/assets/icons/Arrow.svg?data')"
       />
     </div>
-    <div class="select__list list" v-if="opened">
+    <div class="select__list list" v-if="active">
       <div
         class="list__item"
         v-for="(option, index) in options"
@@ -32,23 +32,21 @@
 </template>
 
 <script>
+import activeStateMixin from '/src/mixins/activeStateMixin'
 export default {
   name: "MySelect",
+  mixins: [activeStateMixin],
   data() {
     return {
-      opened: false,
       selectedOption: null,
     };
   },
   props: ["options"],
   methods: {
-    openPanel() {
-      this.opened = !this.opened;
-    },
     selectOption(option) {
       this.selectedOption = option;
       this.$emit("selected", option);
-      this.openPanel();
+      this.setActive();
     },
   },
   created() {

@@ -143,13 +143,15 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 import MyBadge from "./UI/MyBadge.vue";
+import activeStateMixin from '../mixins/activeStateMixin'
+import roleMixin from '../mixins/roleMixin';
 export default {
   components: { MyBadge },
   name: "InfoCard",
+  mixins: [activeStateMixin, roleMixin],
   data() {
     return {
       opened: false,
-      active: false,
     };
   },
   methods: {
@@ -163,7 +165,6 @@ export default {
       last_name: (state) => state.user.last_name,
       second_name: (state) => state.user.second_name,
       isu: (state) => state.user.isu,
-      role: (state) => state.user.role,
       course: (state) => state.user.course,
       faculty: (state) => state.user.faculty,
       op: (state) => state.user.op,

@@ -1,36 +1,28 @@
 <template>
   <div class="panel">
-    <div class="panel__header" @click="openPanel">
+    <div class="panel__header" @click="setActive">
       <div class="panel__header__title">
         {{ title }}
       </div>
       <img
         class="icon"
-        :class="{ 'icon-close': opened }"
+        :class="{ 'icon-close': active }"
         :src="require('/src/assets/icons/Arrow.svg?data')"
       />
     </div>
-    <div class="panel__body" v-if="opened">
+    <div class="panel__body" v-if="active">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
+import activeStateMixin from '/src/mixins/activeStateMixin'
 export default {
   name: "MyPanel",
+  mixins: [activeStateMixin],
   props: {
     title: null,
-  },
-  data() {
-    return {
-      opened: false,
-    };
-  },
-  methods: {
-    openPanel() {
-      this.opened = !this.opened;
-    },
   },
 };
 </script>
