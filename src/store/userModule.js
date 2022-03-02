@@ -263,6 +263,30 @@ export default {
             return state.powers.slice(1);
           }
         return null;
+    },
+    getActivityOptions(state) {
+      const options = [
+        { name: "Вся деятельность", value: state.activities.length },
+        {
+          name: "Проекты",
+          value: state.activities.filter((a) => a.option === "Проекты").length,
+        },
+        {
+          name: "РИД",
+          value: state.activities.filter((a) => a.option === "РИД").length,
+        },
+        {
+          name: "Публикации",
+          value: state.activities.filter((a) => a.option === "Публикации")
+            .length,
+        },
+        {
+          name: "Мероприятия",
+          value: state.activities.filter((a) => a.option === "Мероприятия")
+            .length,
+        },
+      ];
+      return options;
     }
   },
   namespaced: true,

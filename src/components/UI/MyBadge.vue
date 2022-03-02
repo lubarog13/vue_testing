@@ -27,21 +27,15 @@
 </template>
 
 <script>
+import activeStateMixin from '/src/mixins/activeStateMixin'
 export default {
   name: "MyBadge",
+  mixins: [activeStateMixin],
   props: {
     title: null,
     text: null,
     variant: null,
     id: null,
-  },
-  data() {
-    return {
-      active: false,
-    };
-  },
-  created() {
-    console.log(this.variant);
   },
 };
 </script>

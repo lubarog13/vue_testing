@@ -47,6 +47,7 @@ import TimetableCard from "../components/TimetableCard.vue";
 import PhotoCard from "../components/PhotoCard.vue";
 import MySelect from "../components/UI/MySelect.vue";
 import { mapGetters } from 'vuex';
+import roleMixin from '../mixins/roleMixin'
 export default {
   components: {
     PhotoCard,
@@ -59,6 +60,7 @@ export default {
     MySelect,
   },
   name: "PersonalityPage",
+  mixins: [roleMixin],
   data() {
     return {
       selectedOption: { name: "Вся деятельность" },
@@ -68,37 +70,11 @@ export default {
   },
   computed: {
     ...mapGetters ({
-        searchedActivities: 'user/getSearchedAndFilteredActivities'
+        searchedActivities: 'user/getSearchedAndFilteredActivities',
+        activity_options: 'user/getActivityOptions'
     }),
     activities() {
       return this.$store.state.user.activities;
-    },
-    activity_options() {
-      const options = [
-        { name: "Вся деятельность", value: this.activities.length },
-        {
-          name: "Проекты",
-          value: this.activities.filter((a) => a.option === "Проекты").length,
-        },
-        {
-          name: "РИД",
-          value: this.activities.filter((a) => a.option === "РИД").length,
-        },
-        {
-          name: "Публикации",
-          value: this.activities.filter((a) => a.option === "Публикации")
-            .length,
-        },
-        {
-          name: "Мероприятия",
-          value: this.activities.filter((a) => a.option === "Мероприятия")
-            .length,
-        },
-      ];
-      return options;
-    },
-    role() {
-      return this.$store.state.user.role;
     },
     searchedAndFilteredActivities() {
       return this.searchedActivities({searchQuery: this.searchQuery, filter: this.selectedOption})

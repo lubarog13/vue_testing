@@ -12,7 +12,7 @@
       >
       <my-calendar
         v-model="selectedDate"
-        v-if="calendar"
+        v-if="active"
         class="schedule__date__picker"
       />
       <b-button class="schedule__date__forward" @click="addDay(1)"
@@ -58,14 +58,15 @@
 import MyCalendar from "./UI/MyCalendar.vue";
 import dayjs from "dayjs";
 import { mapGetters } from 'vuex';
+import activeStateMixin from '../mixins/activeStateMixin';
 require("dayjs/locale/ru");
 export default {
   components: { MyCalendar },
   name: "ScheduleCard",
+  mixins: [activeStateMixin],
   data() {
     return {
       selectedDate: dayjs(),
-      calendar: false,
     };
   },
   computed: {
@@ -87,7 +88,7 @@ export default {
       );
     },
     showCalendar() {
-      this.calendar = !this.calendar;
+      this.active = !this.active;
     },
   },
 };
