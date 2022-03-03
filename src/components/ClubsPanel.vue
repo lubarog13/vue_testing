@@ -24,7 +24,7 @@
 import MyPanel from "./UI/MyPanel.vue";
 export default {
   components: { MyPanel },
-  name: "ClubsCard",
+  name: "ClubsPanel",
 
   computed: {
     clubs() {

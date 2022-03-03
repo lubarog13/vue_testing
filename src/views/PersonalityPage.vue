@@ -8,9 +8,9 @@
         <contacts-card />
       </div>
       <div class="person__variable-block">
-        <timetable-card v-if="role === 'teacher'" />
-        <ColleaguesCard v-else-if="role === 'employee'" />
-        <clubs-card v-else />
+        <timetable-panel v-if="role === 'teacher'" />
+        <ColleaguesPanel v-else-if="role === 'employee'" />
+        <clubs-panel v-else />
       </div>
     </div>
     <div class="right__content">
@@ -40,10 +40,10 @@
 <script>
 import InfoCard from "../components/InfoCard.vue";
 import ActivityCard from "../components/ActivityCard.vue";
-import ClubsCard from "../components/ClubsCard.vue";
+import ClubsPanel from "../components/ClubsPanel.vue";
 import ContactsCard from "../components/ContactsCard.vue";
-import ColleaguesCard from "../components/ColleaguesCard.vue";
-import TimetableCard from "../components/TimetableCard.vue";
+import ColleaguesPanel from "../components/ColleaguesPanel.vue";
+import TimetablePanel from "../components/TimetablePanel.vue";
 import PhotoCard from "../components/PhotoCard.vue";
 import MySelect from "../components/UI/MySelect.vue";
 import { mapGetters } from 'vuex';
@@ -54,9 +54,9 @@ export default {
     InfoCard,
     ActivityCard,
     ContactsCard,
-    ClubsCard,
-    ColleaguesCard,
-    TimetableCard,
+    ClubsPanel,
+    ColleaguesPanel,
+    TimetablePanel,
     MySelect,
   },
   name: "PersonalityPage",

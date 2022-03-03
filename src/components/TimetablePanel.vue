@@ -60,7 +60,7 @@ import activeStateMixin from '../mixins/activeStateMixin'
 
 export default {
   components: { MyModal, ScheduleCard, MyPanel },
-  name: "TimetableCard",
+  name: "TimetablePanel",
   mixins: [activeStateMixin],
   computed: {
     ...mapGetters ({

@@ -30,7 +30,7 @@
 import MyPanel from "./UI/MyPanel.vue";
 export default {
   components: { MyPanel },
-  name: "ColleaguesCard",
+  name: "ColleaguesPanel",
   computed: {
     colleagues() {
       return this.$store.state.user.colleagues;
